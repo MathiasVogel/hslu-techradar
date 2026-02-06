@@ -15,15 +15,20 @@ include::src/config.adoc[]
 :toc-title: Inhaltsverzeichnis
 
 
-
-include::src/about-arc42.adoc[]
-
 // horizontal line
 ***
 
-
-
-
+ifdef::arc42help[]
+[role="arc42help"]
+****
+[NOTE]
+====
+Diese Version des Templates enthält Hilfen und Erläuterungen.
+Sie dient der Einarbeitung in arc42 sowie dem Verständnis der Konzepte.
+Für die Dokumentation eigener System verwenden Sie besser die _plain_ Version.
+====
+****
+endif::arc42help[]
 
 // numbering from here on
 :numbered:
@@ -71,7 +76,3 @@ include::src/10_quality_requirements.adoc[]
 <<<<
 // 11. Risiken
 include::src/11_technical_risks.adoc[]
-
-<<<<
-// 12. Glossar
-include::src/12_glossary.adoc[]
