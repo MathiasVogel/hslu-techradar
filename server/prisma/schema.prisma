@@ -10,14 +10,14 @@ datasource db {
 model Technology {
   id          String   @id @default(uuid())
   name        String   @unique
-  description String?
-  website     String?
   category    Category
-  ring        Ring
-  moved       Int      @default(0)
-  active      Boolean  @default(true)
+  ring        Ring?
+  description String
+  justification String?
+  published   Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  publishedAt   DateTime?
 }
 
 enum Category {

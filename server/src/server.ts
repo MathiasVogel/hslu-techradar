@@ -2,7 +2,7 @@ import express from 'express';
 import swaggerJsDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import techRoutes from './routes/tech.routes.js';
-import path from "node:path";
+import { schemas } from './schemas/schemas.js';
 
 const app = express();
 app.use(express.json());
@@ -20,13 +20,14 @@ const swaggerOptions = {
         url: 'http://localhost:3000',
       },
     ],
+    components: {
+      schemas: schemas
+    }
   },
-  apis: [path.join(__dirname, './routes/*.ts')],
+  apis: ['./routes/*.ts'],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-
-console.log('Anzahl gefundener Pfade:', Object.keys(swaggerDocs).length);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use('/api/technologies', techRoutes);

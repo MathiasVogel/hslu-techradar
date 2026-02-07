@@ -13,114 +13,84 @@ async function main() {
   await prisma.technology.deleteMany();
 
   const technologies = [
-    // LANGUAGES & FRAMEWORKS
+    // LANGUAGES_AND_FRAMEWORKS
     {
       name: 'React',
-      description: 'Die meistgenutzte Library für Web-Frontends.',
       category: Category.LANGUAGES_AND_FRAMEWORKS,
       ring: Ring.ADOPT,
-      moved: 0,
-      website: 'https://react.dev'
+      description: 'Die meistgenutzte Library für Web-Frontends.',
+      justification: 'Industriestandard mit riesigem Ökosystem und hoher Stabilität.',
+      active: true
     },
     {
       name: 'Kotlin',
-      description: 'Moderner Standard für Android-Entwicklung und Backend-Services.',
       category: Category.LANGUAGES_AND_FRAMEWORKS,
       ring: Ring.ADOPT,
-      moved: 0,
-      website: 'https://kotlinlang.org'
+      description: 'Moderner Standard für Android-Entwicklung und Backend-Services.',
+      justification: 'Bietet bessere Typsicherheit und Ergonomie als Java.',
+      active: true
     },
     {
       name: 'Rust',
-      description: 'Systemsprache mit Fokus auf Sicherheit und Performance.',
       category: Category.LANGUAGES_AND_FRAMEWORKS,
       ring: Ring.TRIAL,
-      moved: 1, // Steigt auf
-      website: 'https://www.rust-lang.org'
-    },
-    {
-      name: 'Java 8',
-      description: 'Veraltete Version. Teams sollten auf Java 17+ migrieren.',
-      category: Category.LANGUAGES_AND_FRAMEWORKS,
-      ring: Ring.HOLD,
-      moved: -1, // Sinkt ab
+      description: 'Systemsprache mit Fokus auf Sicherheit und Performance.',
+      justification: 'Vielversprechend für performance-kritische Komponenten.',
+      active: true
     },
 
     // TOOLS
     {
       name: 'GitHub Copilot',
+      category: Category.TOOLS,
+      ring: Ring.ADOPT,
       description: 'KI-gestützte Code-Vervollständigung.',
-      category: Category.TOOLS,
-      ring: Ring.ADOPT,
-      moved: 2, // Neu und wichtig
-      website: 'https://github.com/features/copilot'
+      justification: 'Signifikante Steigerung der Entwicklerproduktivität.',
+      active: true
     },
     {
-      name: 'Postman',
-      description: 'Tool für API-Tests und Dokumentation.',
+      name: 'Docker',
       category: Category.TOOLS,
       ring: Ring.ADOPT,
-      moved: 0,
-    },
-    {
-      name: 'Jenkins',
-      description: 'Klassisches CI/CD Tool. Oft durch modernere Alternativen ersetzt.',
-      category: Category.TOOLS,
-      ring: Ring.HOLD,
-      moved: -1,
-    },
-    {
-      name: 'Terraform',
-      description: 'Infrastructure as Code Standard.',
-      category: Category.TOOLS,
-      ring: Ring.ADOPT,
-      moved: 0,
+      description: 'Plattform zur Containerisierung von Anwendungen.',
+      justification: 'Standard für konsistente Umgebungen von Entwicklung bis Produktion.',
+      active: true
     },
 
     // PLATFORMS
     {
-      name: 'AWS (Amazon Web Services)',
-      description: 'Marktführende Cloud-Plattform.',
-      category: Category.PLATFORMS,
-      ring: Ring.ADOPT,
-      moved: 0,
-    },
-    {
       name: 'Vercel',
-      description: 'Optimale Plattform für Next.js und Frontend-Deployments.',
       category: Category.PLATFORMS,
       ring: Ring.TRIAL,
-      moved: 1,
+      description: 'Optimale Plattform für Next.js und Frontend-Deployments.',
+      justification: 'Setzt Maßstäbe in Sachen Developer Experience und Performance.',
+      active: true
     },
     {
-      name: 'Azure',
-      description: 'Microsofts Cloud-Ökosystem, stark in Enterprise-Umgebungen.',
+      name: 'Kubernetes',
       category: Category.PLATFORMS,
       ring: Ring.ADOPT,
-      moved: 0,
+      description: 'Orchestrierungssystem für Container-Cluster.',
+      justification: 'De-facto-Standard für Cloud-native Infrastrukturen.',
+      active: true
     },
 
     // TECHNIQUES
     {
-      name: 'Microservices',
-      description: 'Architekturstil zur Zerlegung komplexer Systeme.',
-      category: Category.TECHNIQUES,
-      ring: Ring.ADOPT,
-      moved: 0,
-    },
-    {
       name: 'GraphQL',
-      description: 'Abfragesprache für APIs als Alternative zu REST.',
       category: Category.TECHNIQUES,
       ring: Ring.TRIAL,
-      moved: 0,
+      description: 'Abfragesprache für APIs für präzisen Datentransfer.',
+      justification: 'Reduziert Overfetching und verbessert die Effizienz im Frontend.',
+      active: true
     },
     {
-      name: 'Test Driven Development (TDD)',
-      description: 'Entwicklungsprozess, bei dem Tests vor dem Code geschrieben werden.',
+      name: 'TDD',
       category: Category.TECHNIQUES,
       ring: Ring.ADOPT,
-      moved: 0,
+      description: 'Test-Driven Development als Kern-Entwicklungsprozess.',
+      justification: 'Sorgt für hohe Testabdeckung und wartbaren Code von Beginn an.',
+      active: true
     }
   ];
 

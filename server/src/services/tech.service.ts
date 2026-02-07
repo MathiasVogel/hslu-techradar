@@ -1,11 +1,25 @@
+import { Prisma, Technology } from '../generated/client/client.js';
 import { prisma } from '../config/db.js';
 
 export const getAllTechnologies = async () => {
   return prisma.technology.findMany();
 };
 
-export const getTechnologyById = async (id: string) => {
-  return prisma.technology.findUnique({
+export const createTech = async (data: Prisma.TechnologyCreateInput): Promise<Technology> => {
+  return prisma.technology.create({
+    data: data
+  });
+};
+
+export const deleteTech = async (id: string) => {
+  return prisma.technology.delete({
+    where: { id }
+  });
+}
+
+export const updateTech = async (id: string, data: Prisma.TechnologyUpdateInput) => {
+  return prisma.technology.update({
     where: { id },
+    data: data
   });
 }
