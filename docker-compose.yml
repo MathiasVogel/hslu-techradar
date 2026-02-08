@@ -1,7 +1,8 @@
+version: '3.8'
+
 services:
   db:
-    image: postgres:15-alpine
-    container_name: techradar-db-dev
+    image: postgres:15
     restart: always
     environment:
       POSTGRES_USER: user
@@ -11,6 +12,22 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  server:
+    image: server
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "postgresql://user:password@db:5432/techradar"
+    depends_on:
+      - db
+
+  client:
+    image: client
+    ports:
+      - "4200:80"
+    depends_on:
+      - server
 
 volumes:
   postgres_data:
