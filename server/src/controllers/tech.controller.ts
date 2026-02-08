@@ -6,6 +6,7 @@ export const getTechs = async (req: Request, res: Response) => {
     const data = await TechService.getAllTechnologies();
     res.json(data);
   } catch (error) {
+    console.error("DEBUG DB-FEHLER:", error);
     res.status(500).json({ error: 'Fehler beim Laden der Daten' });
   }
 };
@@ -15,6 +16,7 @@ export const createTech = async (req: Request, res: Response) => {
     const data = await TechService.createTech(req.body);
     res.status(201).json(data);
   } catch (error) {
+    console.error("DEBUG DB-FEHLER:", error);
     res.status(500).json({ error: 'Fehler beim Erstellen der Technologie' });
   }
 }
@@ -30,6 +32,7 @@ export const deleteTech = async (req: Request, res: Response) => {
 
     res.status(200).send();
   } catch (error) {
+    console.error("DEBUG DB-FEHLER:", error);
     res.status(500).json({ error: 'Fehler beim Löschen der Technologie' });
   }
 }
@@ -45,6 +48,7 @@ export const updateTech = async (req: Request, res: Response) => {
 
     res.status(200).json(data);
   } catch (error) {
+    console.error("DEBUG DB-FEHLER:", error);
     res.status(500).json({ error: 'Fehler beim Aktualisieren der Technologie' });
   }
 }

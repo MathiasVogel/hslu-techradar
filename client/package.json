@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "generate-types": "npx openapi-typescript http://localhost:3000/api-spec -o src/app/models/schema.d.ts"
   },
   "prettier": {
     "printWidth": 100,

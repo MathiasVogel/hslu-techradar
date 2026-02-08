@@ -20,7 +20,7 @@ async function main() {
       ring: Ring.ADOPT,
       description: 'Die meistgenutzte Library für Web-Frontends.',
       justification: 'Industriestandard mit riesigem Ökosystem und hoher Stabilität.',
-      active: true
+      published: true
     },
     {
       name: 'Kotlin',
@@ -28,7 +28,7 @@ async function main() {
       ring: Ring.ADOPT,
       description: 'Moderner Standard für Android-Entwicklung und Backend-Services.',
       justification: 'Bietet bessere Typsicherheit und Ergonomie als Java.',
-      active: true
+      published: true
     },
     {
       name: 'Rust',
@@ -36,7 +36,7 @@ async function main() {
       ring: Ring.TRIAL,
       description: 'Systemsprache mit Fokus auf Sicherheit und Performance.',
       justification: 'Vielversprechend für performance-kritische Komponenten.',
-      active: true
+      published: true
     },
 
     // TOOLS
@@ -46,7 +46,7 @@ async function main() {
       ring: Ring.ADOPT,
       description: 'KI-gestützte Code-Vervollständigung.',
       justification: 'Signifikante Steigerung der Entwicklerproduktivität.',
-      active: true
+      published: true
     },
     {
       name: 'Docker',
@@ -54,7 +54,7 @@ async function main() {
       ring: Ring.ADOPT,
       description: 'Plattform zur Containerisierung von Anwendungen.',
       justification: 'Standard für konsistente Umgebungen von Entwicklung bis Produktion.',
-      active: true
+      published: true
     },
 
     // PLATFORMS
@@ -64,7 +64,7 @@ async function main() {
       ring: Ring.TRIAL,
       description: 'Optimale Plattform für Next.js und Frontend-Deployments.',
       justification: 'Setzt Maßstäbe in Sachen Developer Experience und Performance.',
-      active: true
+      published: true
     },
     {
       name: 'Kubernetes',
@@ -72,7 +72,7 @@ async function main() {
       ring: Ring.ADOPT,
       description: 'Orchestrierungssystem für Container-Cluster.',
       justification: 'De-facto-Standard für Cloud-native Infrastrukturen.',
-      active: true
+      published: true
     },
 
     // TECHNIQUES
@@ -82,7 +82,7 @@ async function main() {
       ring: Ring.TRIAL,
       description: 'Abfragesprache für APIs für präzisen Datentransfer.',
       justification: 'Reduziert Overfetching und verbessert die Effizienz im Frontend.',
-      active: true
+      published: true
     },
     {
       name: 'TDD',
@@ -90,7 +90,7 @@ async function main() {
       ring: Ring.ADOPT,
       description: 'Test-Driven Development als Kern-Entwicklungsprozess.',
       justification: 'Sorgt für hohe Testabdeckung und wartbaren Code von Beginn an.',
-      active: true
+      published: true
     }
   ];
 

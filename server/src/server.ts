@@ -24,16 +24,15 @@ const swaggerOptions = {
       schemas: schemas
     }
   },
-  apis: ['./routes/*.ts'],
+  apis: ['./routes/*.ts', './dist/**/*.js'],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
+app.get('/api-spec', (req, res) => {
+  res.send(swaggerDocs);
+});
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use('/api/technologies', techRoutes);
 
-app.listen(3000, () => console.log('Server runs on http://localhost:3000/api-docs'));
-
-app.get('/api-docs/json', (req, res) => {
-  res.json(swaggerDocs);
-});
+app.listen(3000, () => console.log('Tech Server runs on http://localhost:3000/api-docs'));
