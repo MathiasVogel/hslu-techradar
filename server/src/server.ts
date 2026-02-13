@@ -3,8 +3,16 @@ import swaggerJsDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import techRoutes from './routes/tech.routes.js';
 import { schemas } from './schemas/schemas.js';
+import cors from 'cors';
 
 const app = express();
+
+app.use(cors({
+  origin: 'http://localhost:4200',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 
 const swaggerOptions = {

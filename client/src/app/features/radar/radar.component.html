@@ -21,7 +21,7 @@
               <span class="text-xs font-bold uppercase opacity-30">{{ labelMap[ringName] }}</span>
 
               <div class="flex flex-wrap gap-2 mt-2">
-                @for (blip of getBlipsForCell(catName, ringName); track blip.id) {
+                @for (blip of getTechsForCell(catName, ringName); track blip.id) {
                   <button (click)="openDialog(blip)"
                           class="btn btn-xs btn-primary shadow-sm hover:scale-110 transition-transform">
                     {{ blip.name }}
