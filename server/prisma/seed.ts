@@ -20,7 +20,7 @@ async function main() {
       ring: Ring.ADOPT,
       description: 'Die meistgenutzte Library für Web-Frontends.',
       justification: 'Industriestandard mit riesigem Ökosystem und hoher Stabilität.',
-      published: true
+      published: false
     },
     {
       name: 'Kotlin',
@@ -28,7 +28,7 @@ async function main() {
       ring: Ring.ADOPT,
       description: 'Moderner Standard für Android-Entwicklung und Backend-Services.',
       justification: 'Bietet bessere Typsicherheit und Ergonomie als Java.',
-      published: true
+      published: false
     },
     {
       name: 'Rust',

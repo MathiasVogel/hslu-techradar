@@ -12,38 +12,69 @@
         Erstellen
       </button>
     </div>
-
   </div>
-  <div class="overflow-x-auto">
-    <table class="table">
+
+  <div class="overflow-x-auto w-full max-w-6xl bg-base-100 shadow-xl rounded-box">
+    <table class="table w-full">
       <thead>
       <tr>
-        <th></th>
+        <th class="w-16">#</th>
         <th>Name</th>
         <th>Kategorie</th>
         <th>Ring</th>
-        <th>Publiziert</th>
-        <th>Editieren</th>
-        <th>Publizieren</th>
+        <th class="text-center">Status</th>
+        <th class="text-right">Aktionen</th>
       </tr>
       </thead>
       <tbody>
         @for (tech of technologies(); track tech.id; let i = $index) {
           <tr class="hover">
             <th>{{ i + 1 }}</th>
-            <td>{{ tech.name }}</td>
+            <td class="font-bold">{{ tech.name }}</td>
             <td>{{ tech.category | techLabel }}</td>
-            <td>{{ tech.ring | techLabel}}</td>
-            <td>{{ tech.published }}</td>
-            <td><button class="btn btn-primary btn-sm">Edit</button></td>
-            <td><button class="btn btn-primary btn-sm">Publish</button></td>
+            <td>{{ tech.ring | techLabel }}</td>
+
+            <td class="text-center">
+              <div class="flex justify-center">
+                @if (tech.published) {
+                  <span class="badge border-none bg-success/10 text-success badge-sm py-3 w-32 font-semibold">
+                    Veröffentlicht
+                  </span>
+                } @else {
+                  <span class="badge border-none bg-warning/10 text-warning-content badge-sm py-3 w-32 font-semibold">
+                    Entwurf
+                  </span>
+                }
+              </div>
+            </td>
+
+            <td class="text-right">
+              <div class="flex justify-end gap-2">
+                @if (!tech.published) {
+                  <button (click)="openPublishModal(tech)" class="btn btn-ghost btn-sm border-base-300">
+                    Publizieren
+                  </button>
+                } @else {
+                  <button (click)="openEditModal(tech)" class="btn btn-ghost btn-sm border-base-300" title="Informationen bearbeiten">
+                    Editieren
+                  </button>
+                  <button (click)="openUpdateRingModal(tech)" class="btn btn-ghost btn-sm border-base-300" title="Ring ändern">
+                    Einordnung ändern
+                  </button>
+                }
+              </div>
+            </td>
           </tr>
         } @empty {
-          <td colspan="4" class="text-center opacity-50">Keine Einträge vorhanden</td>
+          <tr>
+            <td colspan="6" class="text-center py-12 opacity-50">
+              Keine Technologien in der Datenbank gefunden.
+            </td>
+          </tr>
         }
       </tbody>
     </table>
   </div>
 </div>
 
-<app-tech-form></app-tech-form>
+<app-tech-form [editData]="selectedTech()"></app-tech-form>

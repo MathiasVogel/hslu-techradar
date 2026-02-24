@@ -20,9 +20,10 @@ export class TechFormComponent {
   // Das zentrale Formular-Objekt
   techForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
-    category: ['TECHNIQUES', [Validators.required]],
-    ring: ['ASSESS', [Validators.required]],
+    category: ['TECHNIQUES' as any, [Validators.required]], // Type-Cast falls Enum-Probleme
+    ring: ['ASSESS' as any, [Validators.required]],
     description: ['', [Validators.required]],
+    justification: ['', [Validators.required]], // <--- Das hier hinzufügen
     published: [false]
   });
 
@@ -36,6 +37,14 @@ export class TechFormComponent {
         this.techForm.reset();
       }
     });
+  }
+
+  closeModal() {
+    const modal = document.getElementById('radar_modal') as HTMLDialogElement;
+    if (modal) {
+      modal.close();
+    }
+    this.techForm.reset();
   }
 
   onSubmit() {

@@ -14,3 +14,10 @@ export const CATEGORY_LABELS: Record<string, string> = {
   TOOLS: 'Werkzeuge',
   LANGUAGES_AND_FRAMEWORKS: 'Sprachen & Frameworks'
 };
+
+export enum TechFormMode {
+  CREATE = 'CREATE',
+  PUBLISH = 'PUBLISH',
+  EDIT_INFO = 'EDIT_INFO',
+  UPDATE_RING = 'UPDATE_RING'
+}

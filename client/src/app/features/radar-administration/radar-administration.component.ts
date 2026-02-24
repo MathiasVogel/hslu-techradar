@@ -12,20 +12,34 @@ import { TechFormComponent } from '../../shared/tech-form/tech-form.component';
 })
 export class RadarAdministrationComponent implements OnInit {
   private techService = inject(TechService);
-
-  technologies = this.techService.publishedTechnologies;
-  selectedTechnologie: TechnologyDTO | null = null;
-
-  openDialog(technologie: TechnologyDTO) {
-    this.selectedTechnologie = technologie;
-    (document.getElementById('radar_modal') as HTMLDialogElement).showModal();
-  }
+  technologies = this.techService.allTechnologies;
+  selectedTech = this.techService.selectedTech;
 
   async ngOnInit() {
     await this.techService.fetchTechnologies();
   }
 
-  openCreateModal () {
+  openCreateModal() {
+    this.techService.openCreate(); // Setzt selectedTech auf null
+    this.showModal();
+  }
+
+  openPublishModal(tech: TechnologyDTO) {
+    this.techService.openPublish(tech);
+    this.showModal();
+  }
+
+  openEditModal(tech: TechnologyDTO) {
+    this.techService.openEdit(tech);
+    this.showModal();
+  }
+
+  openUpdateRingModal(tech: TechnologyDTO) {
+    this.techService.openUpdateRing(tech);
+    this.showModal();
+  }
+
+  private showModal () {
     (document.getElementById('radar_modal') as HTMLDialogElement).showModal();
   }
 }
