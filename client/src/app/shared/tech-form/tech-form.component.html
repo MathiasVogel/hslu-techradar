@@ -1,0 +1,50 @@
+<dialog id="radar_modal" class="modal">
+  <div class="modal-box border-t-8 border-primary max-w-2xl">
+    <form [formGroup]="techForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-4">
+      <fieldset class="fieldset">
+        <label class="label">Name</label>
+        <input type="text" class="input" placeholder="Name"/>
+
+        <label class="label">Kategorie</label>
+        <select class="select">
+          <option disabled selected>Kategorie Wählen</option>
+          @for (cat of CATEGORIES; track cat) {
+            <option [value]="cat">
+              {{ cat | techLabel }}
+            </option>
+          }
+        </select>
+
+        <label class="label">Ring</label>
+        <select class="select">
+          <option disabled selected>Ring Wählen</option>
+          @for (ring of RINGS; track ring) {
+            <option [value]="ring">
+              {{ ring | techLabel }}
+            </option>
+          }
+        </select>
+
+        <label class="label">Beschreibung Technologie</label>
+        <textarea
+          class="textarea textarea-bordered w-full h-24"
+          placeholder="Beschreibung Technologie"
+          formControlName="justification"
+          rows="3">
+        </textarea>
+
+        <label class="label">Beschreibung Einordnung</label>
+        <textarea
+          class="textarea textarea-bordered w-full h-24"
+          placeholder="Beschreibung Einordnung"
+          formControlName="justification"
+          rows="3">
+        </textarea>
+
+        <button type="submit" [disabled]="techForm.invalid" class="btn btn-primary mt-4">
+          {{ editData() ? 'Technologie speichern' : 'Technologie erstellen' }}
+        </button>
+      </fieldset>
+    </form>
+  </div>
+</dialog>

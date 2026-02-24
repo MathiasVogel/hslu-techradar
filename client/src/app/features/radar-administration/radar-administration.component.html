@@ -1,0 +1,49 @@
+<div class="min-h-screen bg-base-200 p-4 md:p-8 flex flex-col items-center">
+  <div class="w-full max-w-6xl grid grid-cols-3 items-center mb-12">
+    <div></div>
+    <h1 class="text-3xl font-black uppercase tracking-tighter text-primary text-center whitespace-nowrap">
+      Radar Administration
+    </h1>
+    <div class="flex justify-end">
+      <button (click)="openCreateModal()" class="btn btn-primary gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+        Erstellen
+      </button>
+    </div>
+
+  </div>
+  <div class="overflow-x-auto">
+    <table class="table">
+      <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Kategorie</th>
+        <th>Ring</th>
+        <th>Publiziert</th>
+        <th>Editieren</th>
+        <th>Publizieren</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (tech of technologies(); track tech.id; let i = $index) {
+          <tr class="hover">
+            <th>{{ i + 1 }}</th>
+            <td>{{ tech.name }}</td>
+            <td>{{ tech.category | techLabel }}</td>
+            <td>{{ tech.ring | techLabel}}</td>
+            <td>{{ tech.published }}</td>
+            <td><button class="btn btn-primary btn-sm">Edit</button></td>
+            <td><button class="btn btn-primary btn-sm">Publish</button></td>
+          </tr>
+        } @empty {
+          <td colspan="4" class="text-center opacity-50">Keine Einträge vorhanden</td>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-tech-form></app-tech-form>

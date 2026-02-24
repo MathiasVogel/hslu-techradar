@@ -7,6 +7,7 @@ import {TechnologyDTO} from '../../models/api.types';
 })
 export class TechService {
   private technologiesSignal = signal<TechnologyDTO[]>([]);
+  selectedTech = signal<TechnologyDTO | null>(null);
 
   constructor() { }
 
@@ -18,6 +19,14 @@ export class TechService {
       return;
     }
     this.technologiesSignal.set(data ?? []);
+  }
+
+  openEdit(tech: TechnologyDTO) {
+    this.selectedTech.set(tech);
+  }
+
+  openCreate() {
+    this.selectedTech.set(null);
   }
 
   readonly allTechnologies = computed(() => this.technologiesSignal);

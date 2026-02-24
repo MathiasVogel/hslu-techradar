@@ -25,7 +25,8 @@ import { RouterLink} from '@angular/router';
           <ul
             tabindex="-1"
             class="menu menu-lg dropdown-content bg-base-2 rounded-box z-1 mt-3 w-52 p-2 shadow">
-            <li><a>Settings</a></li>
+            <li><a routerLink="/radar-admin">Radar Admin</a></li>
+            <li><a routerLink="/system-admin">System Admin</a></li>
             <li><app-logout-button /></li>
           </ul>
         </div>

@@ -3,14 +3,14 @@
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-2 w-full max-w-6xl">
 
-    @for (catName of categories; track catName) {
+    @for (catName of CATEGORIES; track catName) {
       <div class="bg-base-100 shadow-xl p-4 flex flex-col border border-base-300">
         <h2 class="text-l font-black uppercase mb-4 opacity-40 tracking-widest">
-          {{ labelMap[catName] }}
+          {{ catName | techLabel }}
         </h2>
 
         <div class="flex flex-col gap-1 flex-grow">
-          @for (ringName of rings; track ringName) {
+          @for (ringName of RINGS; track ringName) {
             <div class="p-3 min-h-[80px] transition-colors"
                  [ngClass]="{
                    'bg-primary/10': ringName === 'ADOPT',
@@ -18,7 +18,7 @@
                    'bg-base-200/50': ringName === 'ASSESS',
                    'bg-base-300/30': ringName === 'HOLD'
                  }">
-              <span class="text-xs font-bold uppercase opacity-30">{{ labelMap[ringName] }}</span>
+              <span class="text-xs font-bold uppercase opacity-30">{{ ringName | techLabel }}</span>
 
               <div class="flex flex-wrap gap-2 mt-2">
                 @for (blip of getTechsForCell(catName, ringName); track blip.id) {
@@ -36,7 +36,4 @@
   </div>
 </div>
 
-<app-tech-detail
-  [technologie]="selectedTechnologie"
-  [labelMap]="labelMap">
-</app-tech-detail>
+<app-tech-detail [technologie]="selectedTechnologie"></app-tech-detail>

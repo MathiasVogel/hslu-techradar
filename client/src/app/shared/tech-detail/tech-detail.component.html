@@ -11,7 +11,7 @@
             <span class="text-xs font-black uppercase tracking-widest opacity-40">Kategorie</span>
             <div class="divider my-1"></div>
             <span class="text-base-content/80 leading-relaxed">
-              {{ labelMap[technologie.category] }}
+              {{ technologie.category | techLabel }}
             </span>
           </div>
 
@@ -20,7 +20,7 @@
             <div class="divider my-1"></div>
             <div>
               <span class="text-base-content/80 leading-relaxed">
-                {{ labelMap[technologie.ring || ''] }}
+                {{ technologie.ring | techLabel }}
               </span>
             </div>
           </div>
