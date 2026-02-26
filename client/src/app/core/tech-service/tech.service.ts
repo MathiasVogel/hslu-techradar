@@ -32,7 +32,6 @@ export class TechService {
 
   async createTechnology(tech: CreateTechnologyDTO) {
     const { data, error } = await client.POST("/api/technologies", { body: tech });
-    console.log("Create response:", { data, error });
     if (error) {
       console.error(error);
       return;
@@ -41,20 +40,29 @@ export class TechService {
     this.technologiesSignal.update(list => [...list, data]);
   }
 
-  async updateTechnology(id: string, tech: Partial<UpdateTechnologyDTO>) {
+  async updateTechnology(id: string, tech: UpdateTechnologyDTO) {
     const { data, error } = await client.PATCH("/api/technologies/{id}", {
       params: { path: { id } },
       body: tech
     } as any);
-    console.log("Update response:", { data, error });
     if (error) {
       console.error(error);
       return;
     }
-
     this.technologiesSignal.update(list =>
       list.map(t => t.id === id ? { ...t, ...data } : t)
     );
+  }
+
+  async deleteTechnology(id: string) {
+    const {error} = await client.DELETE("/api/technologies/{id}", {
+      params: {path: {id}}
+    } as any);
+    if (error) {
+      console.error(error);
+      return;
+    }
+    this.technologiesSignal.update(list => list.filter(t => t.id !== id));
   }
 
   openPublish(tech: TechnologyDTO) {
@@ -76,5 +84,4 @@ export class TechService {
     this.selectedTech.set(tech);
     this.formMode.set(TechFormMode.UPDATE_RING);
   }
-
 }

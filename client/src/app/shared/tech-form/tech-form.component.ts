@@ -1,4 +1,3 @@
-// typescript
 import {Component, effect, inject, input} from '@angular/core';
 import {NonNullableFormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TechnologyDTO} from '../../models/api.types';
@@ -62,27 +61,28 @@ export class TechFormComponent {
       }
 
       Object.values(controls).forEach(c => c.updateValueAndValidity());
-
     });
-  }
-
-  closeModal() {
-    const modal = document.getElementById('radar_modal') as HTMLDialogElement;
-    if (modal) {
-      modal.close();
-    }
   }
 
   onSubmit() {
     if (this.techForm.valid) {
       const payload = this.techForm.getRawValue();
       if (this.editData()) {
-        console.log('Update:', this.editData()?.id, payload);
-        this.techService.updateTechnology(payload)
+        if(!payload.published){
+          payload.published = true;
+        }
+        this.techService.updateTechnology(this.editData()!.id, payload)
       } else {
-        console.log('Create:', payload);
         this.techService.createTechnology(payload)
       }
+    }
+    this.closeModal();
+  }
+
+  closeModal() {
+    const modal = document.getElementById('radar_modal') as HTMLDialogElement;
+    if (modal) {
+      modal.close();
     }
   }
 }

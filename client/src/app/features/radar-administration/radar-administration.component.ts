@@ -39,6 +39,10 @@ export class RadarAdministrationComponent implements OnInit {
     this.showModal();
   }
 
+  onDelete(id: string) {
+    this.techService.deleteTechnology(id);
+  }
+
   private showModal () {
     (document.getElementById('radar_modal') as HTMLDialogElement).showModal();
   }
