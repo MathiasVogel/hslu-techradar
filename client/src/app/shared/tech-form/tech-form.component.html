@@ -42,7 +42,7 @@
         </textarea>
 
         <div class="modal-action">
-          <button type="button" class="btn" (click)="closeModal()">Abbrechen</button>
+          <button type="button" class="btn" (click)="closeModal()" autofocus>Abbrechen</button>
           <button type="submit" [disabled]="techForm.invalid" class="btn btn-primary">
             {{ editData() ? 'Speichern' : 'Erstellen' }}
           </button>

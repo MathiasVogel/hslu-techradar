@@ -1,8 +1,10 @@
+// typescript
 import {Component, effect, inject, input} from '@angular/core';
 import {NonNullableFormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TechnologyDTO} from '../../models/api.types';
-import {CATEGORIES, RINGS} from '../constants/tech-radar.constatns';
+import {CATEGORIES, RINGS, TechFormMode} from '../constants/tech-radar.constatns';
 import {TechLabelPipe} from '../pipes/tech-label-pipe';
+import {TechService} from '../../core/tech-service/tech.service';
 
 @Component({
   selector: 'app-tech-form',
@@ -13,29 +15,54 @@ import {TechLabelPipe} from '../pipes/tech-label-pipe';
 })
 export class TechFormComponent {
   private fb = inject(NonNullableFormBuilder);
+  protected techService = inject(TechService);
+  protected readonly CATEGORIES = CATEGORIES;
+  protected readonly RINGS = RINGS;
 
-  // Input für den Edit-Modus (optional)
   editData = input<TechnologyDTO | null>(null);
 
-  // Das zentrale Formular-Objekt
   techForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
-    category: ['TECHNIQUES' as any, [Validators.required]], // Type-Cast falls Enum-Probleme
+    category: ['TECHNIQUES' as any, [Validators.required]],
     ring: ['ASSESS' as any, [Validators.required]],
     description: ['', [Validators.required]],
-    justification: ['', [Validators.required]], // <--- Das hier hinzufügen
+    justification: ['', [Validators.required]],
     published: [false]
   });
 
   constructor() {
-    // Sobald sich editData ändert, füllen wir das Formular
     effect(() => {
       const data = this.editData();
+      const mode = this.techService.formMode();
+      const controls = this.techForm.controls;
       if (data) {
         this.techForm.patchValue(data);
       } else {
-        this.techForm.reset();
+        this.techForm.reset({ category: 'TECHNIQUES', ring: 'ASSESS', published: false });
       }
+      Object.values(controls).forEach(c => c.enable());
+      switch (mode) {
+        case TechFormMode.CREATE:
+          controls.name.hasError('required');
+          controls.justification.clearValidators();
+          break;
+
+        case TechFormMode.PUBLISH:
+        case TechFormMode.UPDATE_RING:
+          controls.name.disable();
+          controls.category.disable();
+          controls.description.disable();
+          controls.justification.setValidators([Validators.required, Validators.minLength(10)]);
+          break;
+
+        case TechFormMode.EDIT_INFO:
+          controls.ring.disable();
+          controls.justification.disable();
+          break;
+      }
+
+      Object.values(controls).forEach(c => c.updateValueAndValidity());
+
     });
   }
 
@@ -44,7 +71,6 @@ export class TechFormComponent {
     if (modal) {
       modal.close();
     }
-    this.techForm.reset();
   }
 
   onSubmit() {
@@ -52,14 +78,9 @@ export class TechFormComponent {
       const payload = this.techForm.getRawValue();
       if (this.editData()) {
         console.log('Update:', this.editData()?.id, payload);
-        // this.techService.update(this.editData()!.id, payload);
       } else {
         console.log('Create:', payload);
-        // this.techService.create(payload);
       }
     }
   }
-
-  protected readonly RINGS = RINGS;
-  protected readonly CATEGORIES = CATEGORIES;
 }
