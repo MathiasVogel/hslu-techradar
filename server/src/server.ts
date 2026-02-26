@@ -9,7 +9,7 @@ const app = express();
 
 app.use(cors({
   origin: 'http://localhost:4200',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
@@ -32,7 +32,7 @@ const swaggerOptions = {
       schemas: schemas
     }
   },
-  apis: ['./routes/*.ts', './dist/**/*.js'],
+  apis: ['./src/routes/*.ts', './dist/**/*.js'],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);

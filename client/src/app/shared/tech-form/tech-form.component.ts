@@ -78,8 +78,10 @@ export class TechFormComponent {
       const payload = this.techForm.getRawValue();
       if (this.editData()) {
         console.log('Update:', this.editData()?.id, payload);
+        this.techService.updateTechnology(payload)
       } else {
         console.log('Create:', payload);
+        this.techService.createTechnology(payload)
       }
     }
   }
