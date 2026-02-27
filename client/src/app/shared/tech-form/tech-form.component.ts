@@ -67,16 +67,18 @@ export class TechFormComponent {
   }
 
   onSubmit() {
-    if (this.techForm.valid) {
-      const payload = this.techForm.getRawValue();
-      if (this.editData()) {
-        if(!payload.published){
-          payload.published = true;
-        }
-        this.techService.updateTechnology(this.editData()!.id, payload)
-      } else {
-        this.techService.createTechnology(payload)
+    if (this.techForm.invalid) return;
+
+    const payload = this.techForm.getRawValue();
+    const editId = this.editData()?.id;
+
+    if (editId) {
+      if (this.techService.formMode() === TechFormMode.PUBLISH) {
+        payload.published = true;
       }
+      this.techService.updateTechnology(editId, payload);
+    } else {
+      this.techService.createTechnology(payload);
     }
     this.closeModal();
   }

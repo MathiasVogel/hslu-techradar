@@ -23,8 +23,16 @@ export const deleteTech = async (id: string) => {
 }
 
 export const updateTech = async (id: string, data: Prisma.TechnologyUpdateInput) => {
+  const current = await prisma.technology.findUnique({ where: { id } });
+
+  if (!current) return null;
+
+  if (data.published === true && !current.publishedAt) {
+    data.publishedAt = new Date();
+  }
+
   return prisma.technology.update({
     where: { id },
     data: data
   });
-}
+};
