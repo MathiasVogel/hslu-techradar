@@ -1,7 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { TechService } from './tech.service';
-import { TechFormMode } from '../../shared/constants/tech-radar.constatns';
-import { TechnologyDTO, CreateTechnologyDTO, UpdateTechnologyDTO } from '../api/api.types';
+import { client } from '../api/client';
 
 const { getMock, postMock, patchMock, deleteMock } = vi.hoisted(() => ({
   getMock: vi.fn(),
@@ -18,6 +16,10 @@ vi.mock('../api/client', () => ({
     DELETE: deleteMock
   }
 }));
+
+import { TechService } from './tech.service';
+import { TechFormMode } from '../../shared/constants/tech-radar.constatns';
+import { TechnologyDTO, CreateTechnologyDTO, UpdateTechnologyDTO } from '../api/api.types';
 
 const baseTech: TechnologyDTO = {
   id: '1',
@@ -37,6 +39,12 @@ describe('TechService', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+    Object.assign(client as any, {
+      GET: getMock,
+      POST: postMock,
+      PATCH: patchMock,
+      DELETE: deleteMock
+    });
     service = new TechService();
   });
 
