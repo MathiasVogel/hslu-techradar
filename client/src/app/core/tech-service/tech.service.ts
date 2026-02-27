@@ -37,7 +37,7 @@ export class TechService {
       return;
     }
 
-    this.technologiesSignal.update(list => [...list, data]);
+    this.technologiesSignal.update(list => [data, ...list]);
   }
 
   async updateTechnology(id: string, tech: UpdateTechnologyDTO) {

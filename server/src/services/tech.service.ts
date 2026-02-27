@@ -2,7 +2,12 @@ import { Prisma, Technology } from '../generated/client/client.js';
 import { prisma } from '../config/db.js';
 
 export const getAllTechnologies = async () => {
-  return prisma.technology.findMany();
+  return prisma.technology.findMany({
+    orderBy: [
+      { published: 'asc' },
+      { name: 'asc' }
+    ]
+  });
 };
 
 export const createTech = async (data: Prisma.TechnologyCreateInput): Promise<Technology> => {
