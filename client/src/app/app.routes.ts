@@ -3,8 +3,7 @@ import { LayoutComponent } from './core/layout/layout.component';
 import { RadarComponent } from './features/radar/radar.component';
 import { AuthGuard } from '@auth0/auth0-angular';
 import {HomeComponent} from './features/home/home.component';
-import {RadarAdministrationComponent} from './features/radar-administration/radar-administration.component';
-import {SystemAdministrationComponent} from './features/system-administration/system-administration.component';
+import {RadarAdministrationComponent} from './features/admin/radar-administration.component';
 
 export const routes: Routes = [
   {
@@ -15,7 +14,6 @@ export const routes: Routes = [
       { path: 'home', title: 'Home', component: HomeComponent },
       { path: 'radar', title: 'Radar', component: RadarComponent },
       { path: 'radar-admin', title: 'Radar Administration', component: RadarAdministrationComponent },
-      { path: 'system-admin', title: 'System Administration', component: SystemAdministrationComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' }
     ]
   },

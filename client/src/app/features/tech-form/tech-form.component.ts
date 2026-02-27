@@ -1,8 +1,8 @@
 import {Component, effect, inject, input} from '@angular/core';
 import {NonNullableFormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
-import {TechnologyDTO} from '../../models/api.types';
-import {CATEGORIES, RINGS, TechFormMode} from '../constants/tech-radar.constatns';
-import {TechLabelPipe} from '../pipes/tech-label-pipe';
+import {TechnologyDTO} from '../../core/api/api.types';
+import {CATEGORIES, RINGS, TechFormMode} from '../../shared/constants/tech-radar.constatns';
+import {TechLabelPipe} from '../../shared/pipes/tech-label-pipe';
 import {TechService} from '../../core/tech-service/tech.service';
 
 @Component({

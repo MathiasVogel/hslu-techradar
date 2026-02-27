@@ -1,6 +1,6 @@
 import {computed, Injectable, signal} from '@angular/core';
 import { client } from '../api/client';
-import {CreateTechnologyDTO, TechnologyDTO, UpdateTechnologyDTO} from '../../models/api.types';
+import {CreateTechnologyDTO, TechnologyDTO, UpdateTechnologyDTO} from '../api/api.types';
 import {TechFormMode} from '../../shared/constants/tech-radar.constatns';
 
 @Injectable({

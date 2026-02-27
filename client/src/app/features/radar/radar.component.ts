@@ -1,6 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import { NgClass } from '@angular/common';
-import { TechnologyDTO } from '../../models/api.types';
+import { TechnologyDTO } from '../../core/api/api.types';
 import { TechDetailComponent } from '../../shared/tech-detail/tech-detail.component';
 import {TechService} from '../../core/tech-service/tech.service';
 import {CATEGORIES, RINGS} from '../../shared/constants/tech-radar.constatns';

@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { TechService } from '../../core/tech-service/tech.service';
-import { TechnologyDTO } from '../../models/api.types';
+import { TechnologyDTO } from '../../core/api/api.types';
 import { TechLabelPipe } from '../../shared/pipes/tech-label-pipe';
-import { TechFormComponent } from '../../shared/tech-form/tech-form.component';
+import { TechFormComponent } from '../tech-form/tech-form.component';
 
 @Component({
   selector: 'app-radar-administration',

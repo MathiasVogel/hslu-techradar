@@ -1,6 +1,6 @@
-import createClient from "openapi-fetch";
-import { paths } from "../../models/schema"; // Deine generierte Datei
+import createClient from 'openapi-fetch';
+import { paths } from './schema';
 
 export const client = createClient<paths>({
-  baseUrl: "http://localhost:3000/"
+  baseUrl: 'http://localhost:3000/'
 });

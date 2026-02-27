@@ -43,4 +43,4 @@ __screenshots__/
 .DS_Store
 Thumbs.db
 
-/src/app/models/schema.d.ts
+/src/app/core/api/schema.d.ts
