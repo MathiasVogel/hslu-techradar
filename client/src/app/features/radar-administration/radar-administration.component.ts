@@ -14,6 +14,7 @@ export class RadarAdministrationComponent implements OnInit {
   private techService = inject(TechService);
   technologies = this.techService.allTechnologies;
   selectedTech = this.techService.selectedTech;
+  pendingDelete: TechnologyDTO | null = null;
 
   async ngOnInit() {
     await this.techService.fetchTechnologies();
@@ -39,8 +40,21 @@ export class RadarAdministrationComponent implements OnInit {
     this.showModal();
   }
 
-  onDelete(id: string) {
-    this.techService.deleteTechnology(id);
+  openDeleteConfirm(tech: TechnologyDTO) {
+    this.pendingDelete = tech;
+    (document.getElementById('delete_confirm_modal') as HTMLDialogElement | null)?.showModal();
+  }
+
+  confirmDelete() {
+    if (!this.pendingDelete) return;
+    this.techService.deleteTechnology(this.pendingDelete.id);
+    this.pendingDelete = null;
+    (document.getElementById('delete_confirm_modal') as HTMLDialogElement | null)?.close();
+  }
+
+  cancelDelete() {
+    this.pendingDelete = null;
+    (document.getElementById('delete_confirm_modal') as HTMLDialogElement | null)?.close();
   }
 
   private showModal () {

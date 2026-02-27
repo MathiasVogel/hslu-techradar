@@ -22,8 +22,8 @@ export class TechFormComponent {
 
   techForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
-    category: ['TECHNIQUES' as any, [Validators.required]],
-    ring: ['ASSESS' as any, [Validators.required]],
+    category: ['' as any, [Validators.required]],
+    ring: ['' as any, []],
     description: ['', [Validators.required]],
     justification: ['', [Validators.required]],
     published: [false]
@@ -37,13 +37,13 @@ export class TechFormComponent {
       if (data) {
         this.techForm.patchValue(data);
       } else {
-        this.techForm.reset({ category: 'TECHNIQUES', ring: 'ASSESS', published: false });
+        this.techForm.reset({ category: '', ring: '', published: false });
       }
       Object.values(controls).forEach(c => c.enable());
       switch (mode) {
         case TechFormMode.CREATE:
-          controls.name.hasError('required');
           controls.justification.clearValidators();
+          controls.ring.clearValidators();
           break;
 
         case TechFormMode.PUBLISH:
@@ -52,11 +52,13 @@ export class TechFormComponent {
           controls.category.disable();
           controls.description.disable();
           controls.justification.setValidators([Validators.required, Validators.minLength(10)]);
+          controls.ring.setValidators([Validators.required]);
           break;
 
         case TechFormMode.EDIT_INFO:
           controls.ring.disable();
           controls.justification.disable();
+          controls.ring.clearValidators();
           break;
       }
 
@@ -80,9 +82,12 @@ export class TechFormComponent {
   }
 
   closeModal() {
-    const modal = document.getElementById('radar_modal') as HTMLDialogElement;
-    if (modal) {
-      modal.close();
+    (document.getElementById('radar_modal') as HTMLDialogElement | null)?.close();
+    const data = this.editData();
+    if (data) {
+      this.techForm.reset({ ...data, category: data.category ?? '', ring: data.ring ?? '' });
+    } else {
+      this.techForm.reset({ category: '', ring: '', published: false });
     }
   }
 }

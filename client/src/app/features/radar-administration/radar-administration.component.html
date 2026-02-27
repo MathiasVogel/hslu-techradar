@@ -62,7 +62,7 @@
                     Einordnung ändern
                   </button>
                 }
-                <button (click)="onDelete(tech.id)" class="btn btn-ghost btn-sm text-error hover:bg-error hover:text-white border-none"
+                <button (click)="openDeleteConfirm(tech)" class="btn btn-ghost btn-sm text-error hover:bg-error hover:text-white border-none"
                   title="Technologie löschen">
                   Löschen
                 </button>
@@ -80,5 +80,15 @@
     </table>
   </div>
 </div>
+
+<dialog id="delete_confirm_modal" class="modal" tabindex="-1">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Wirklich Löschen?</h3>
+    <div class="modal-action">
+      <button class="btn" type="button" (click)="cancelDelete()">Abbrechen</button>
+      <button class="btn btn-error" type="button" (click)="confirmDelete()">Löschen</button>
+    </div>
+  </div>
+</dialog>
 
 <app-tech-form [editData]="selectedTech()"></app-tech-form>
