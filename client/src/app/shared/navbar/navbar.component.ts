@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import { LogoutButtonComponent } from '../../core/logout-button/logout-button.component';
-import { RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {ROLE_CLAIM} from '../constants/tech-radar.constatns';
 
 @Component({
   selector: 'app-navbar',
@@ -24,9 +27,10 @@ import { RouterLink} from '@angular/router';
           </div>
           <ul
             tabindex="-1"
-            class="menu menu-lg dropdown-content bg-base-2 rounded-box z-1 mt-3 w-52 p-2 shadow">
-            <li><a routerLink="/radar-admin">Radar Admin</a></li>
-            <li><a routerLink="/system-admin">System Admin</a></li>
+            class="menu menu-lg dropdown-content bg-base-200 rounded-box z-[999] mt-3 w-52 p-2 shadow">
+            @if (isAdmin()) {
+              <li><a routerLink="/radar-admin">Radar Admin</a></li>
+            }
             <li><app-logout-button /></li>
           </ul>
         </div>
@@ -36,5 +40,17 @@ import { RouterLink} from '@angular/router';
   styles: ``,
 })
 export class NavbarComponent {
+  constructor() {
+    console.log(this.isAdmin());
+  }
+
+  private auth = inject(AuthService);
+
+  currentUser = toSignal(this.auth.user$);
+
+  isAdmin = computed(() => {
+    const roles = this.currentUser()?.[ROLE_CLAIM];
+    return Array.isArray(roles) && roles.includes('admin');
+  });
 
 }

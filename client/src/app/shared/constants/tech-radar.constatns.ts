@@ -1,5 +1,6 @@
 export const CATEGORIES = ['TECHNIQUES', 'PLATFORMS', 'TOOLS', 'LANGUAGES_AND_FRAMEWORKS'];
 export const  RINGS = ['ADOPT', 'TRIAL', 'ASSESS', 'HOLD'];
+export const ROLE_CLAIM = 'https://tech-radar.mathias-vogel.ch/roles';
 
 export const RING_LABELS: Record<string, string> = {
   ADOPT: 'Adopt',
