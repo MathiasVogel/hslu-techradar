@@ -57,6 +57,12 @@ Cypress.Commands.add('loginAsUser', () => {
   )
 })
 
+Cypress.Commands.add('acceptAuth0Consent', () => {
+  cy.origin(Cypress.expose('auth0_domain'), () => {
+    cy.get('button[value="accept"]').click();
+  });
+});
+
 export {};
 
 

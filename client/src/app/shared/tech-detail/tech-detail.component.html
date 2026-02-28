@@ -1,7 +1,7 @@
-<dialog id="radar_modal" class="modal">
+<dialog id="radar_modal" data-cy="radar-modal" class="modal">
   <div class="modal-box border-t-8 border-primary max-w-2xl">
     @if (technologie) {
-      <h3 class="font-black text-3xl uppercase tracking-tight text-primary mb-6">
+      <h3 data-cy="tech-detail-name" class="font-black text-3xl uppercase tracking-tight text-primary mb-6">
         {{ technologie.name }}
       </h3>
 
@@ -10,7 +10,7 @@
           <div class="flex flex-col">
             <span class="text-xs font-black uppercase tracking-widest opacity-40">Kategorie</span>
             <div class="divider my-1"></div>
-            <span class="text-base-content/80 leading-relaxed">
+            <span data-cy="tech-detail-category" class="text-base-content/80 leading-relaxed">
               {{ technologie.category | techLabel }}
             </span>
           </div>
@@ -19,7 +19,7 @@
             <span class="text-xs font-black uppercase tracking-widest opacity-40">Status</span>
             <div class="divider my-1"></div>
             <div>
-              <span class="text-base-content/80 leading-relaxed">
+              <span data-cy="tech-detail-ring" class="text-base-content/80 leading-relaxed">
                 {{ technologie.ring | techLabel }}
               </span>
             </div>
@@ -29,7 +29,7 @@
         <div class="flex flex-col">
           <span class="text-xs font-black uppercase tracking-widest opacity-40">Beschreibung</span>
           <div class="divider my-1"></div>
-          <p class="text-base-content/80 leading-relaxed">
+          <p data-cy="tech-detail-description" class="text-base-content/80 leading-relaxed">
             {{ technologie.description }}
           </p>
         </div>
@@ -37,7 +37,7 @@
         <div class="flex flex-col">
           <span class="text-xs font-black uppercase tracking-widest opacity-40">Begründung</span>
           <div class="divider my-1"></div>
-          <p class="text-base-content/80 leading-relaxed">
+          <p data-cy="tech-detail-justification" class="text-base-content/80 leading-relaxed">
             {{ technologie.justification }}
           </p>
         </div>
@@ -45,7 +45,7 @@
         <div class="flex flex-col">
           <span class="text-xs font-black uppercase tracking-widest opacity-40">Veröffentlicht</span>
           <div class="divider my-1"></div>
-          <p class="text-base-content/80 leading-relaxed">
+          <p data-cy="tech-detail-published-at" class="text-base-content/80 leading-relaxed">
             {{ technologie.publishedAt | date:'dd.MM.yyyy' }}
           </p>
         </div>
@@ -54,7 +54,7 @@
 
     <div class="modal-action mt-10">
       <form method="dialog">
-        <button class="btn btn-primary rounded-full px-10">Schließen</button>
+        <button data-cy="tech-detail-close" class="btn btn-primary rounded-full px-10">Schließen</button>
       </form>
     </div>
   </div>
