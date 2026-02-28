@@ -1,6 +1,6 @@
-<dialog id="radar_modal" class="modal">
+<dialog id="radar_modal" data-cy="tech-form-modal" class="modal">
   <div class="modal-box border-t-8 border-primary max-w-2xl">
-    <h3 class="font-bold text-lg mb-4">
+    <h3 data-cy="tech-form-title" class="font-bold text-lg mb-4">
       {{ editData() ? 'Technologie bearbeiten' : 'Neue Technologie erfassen' }}
     </h3>
 
@@ -8,11 +8,11 @@
       <fieldset class="fieldset">
 
         <label class="label">Name</label>
-        <input type="text" class="input input-bordered w-full"
+        <input data-cy="tech-form-name" type="text" class="input input-bordered w-full"
                placeholder="z.B. ArgoCD" formControlName="name"/>
 
         <label class="label">Kategorie</label>
-        <select class="select select-bordered w-full" formControlName="category">
+        <select data-cy="tech-form-category" class="select select-bordered w-full" formControlName="category">
           <option value="" disabled selected>Kategorie wählen</option>
           @for (cat of CATEGORIES; track cat) {
             <option [value]="cat">{{ cat | techLabel }}</option>
@@ -20,7 +20,7 @@
         </select>
 
         <label class="label">Ring</label>
-        <select class="select select-bordered w-full" formControlName="ring">
+        <select data-cy="tech-form-ring" class="select select-bordered w-full" formControlName="ring">
           <option value="" disabled selected>Ring wählen</option>
           @for (ring of RINGS; track ring) {
             <option [value]="ring">{{ ring | techLabel }}</option>
@@ -29,6 +29,7 @@
 
         <label class="label">Beschreibung Technologie</label>
         <textarea
+          data-cy="tech-form-description"
           class="textarea textarea-bordered w-full h-24"
           placeholder="Allgemeine Infos zur Technologie..."
           formControlName="description">
@@ -36,14 +37,15 @@
 
         <label class="label">Beschreibung der Einordnung (Begründung)</label>
         <textarea
+          data-cy="tech-form-justification"
           class="textarea textarea-bordered w-full h-24"
           placeholder="Warum wählen wir diesen Ring?"
           formControlName="justification">
         </textarea>
 
         <div class="modal-action">
-          <button type="button" class="btn" (click)="closeModal()" autofocus>Abbrechen</button>
-          <button type="submit" [disabled]="techForm.invalid" class="btn btn-primary">
+          <button data-cy="tech-form-cancel" type="button" class="btn" (click)="closeModal()" autofocus>Abbrechen</button>
+          <button data-cy="tech-form-submit" type="submit" [disabled]="techForm.invalid" class="btn btn-primary">
             {{ editData() ? 'Speichern' : 'Erstellen' }}
           </button>
         </div>

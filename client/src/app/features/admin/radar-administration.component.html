@@ -1,11 +1,11 @@
 <div class="min-h-screen bg-base-200 p-4 md:p-8 flex flex-col items-center">
   <div class="w-full max-w-6xl grid grid-cols-3 items-center mb-12">
     <div></div>
-    <h1 class="text-3xl font-black uppercase tracking-tighter text-primary text-center whitespace-nowrap">
+    <h1 data-cy="admin-title" class="text-3xl font-black uppercase tracking-tighter text-primary text-center whitespace-nowrap">
       Radar Administration
     </h1>
     <div class="flex justify-end">
-      <button (click)="openCreateModal()" class="btn btn-primary gap-2">
+      <button data-cy="admin-create-btn" (click)="openCreateModal()" class="btn btn-primary gap-2">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
         </svg>
@@ -15,7 +15,7 @@
   </div>
 
   <div class="overflow-x-auto w-full max-w-6xl bg-base-100 shadow-xl rounded-box">
-    <table class="table w-full">
+    <table data-cy="admin-table" class="table w-full">
       <thead>
       <tr>
         <th class="w-16">#</th>
@@ -28,20 +28,20 @@
       </thead>
       <tbody>
         @for (tech of technologies(); track tech.id; let i = $index) {
-          <tr class="hover">
+          <tr data-cy="admin-tech-row" class="hover">
             <th>{{ i + 1 }}</th>
-            <td class="font-bold">{{ tech.name }}</td>
-            <td>{{ tech.category | techLabel }}</td>
-            <td>{{ tech.ring | techLabel }}</td>
+            <td data-cy="admin-tech-name" class="font-bold">{{ tech.name }}</td>
+            <td data-cy="admin-tech-category">{{ tech.category | techLabel }}</td>
+            <td data-cy="admin-tech-ring">{{ tech.ring | techLabel }}</td>
 
             <td class="text-center">
               <div class="flex justify-center">
                 @if (tech.published) {
-                  <span class="badge border-none bg-success/10 text-success badge-sm py-3 w-32 font-semibold">
+                  <span data-cy="admin-tech-status" class="badge border-none bg-success/10 text-success badge-sm py-3 w-32 font-semibold">
                     Veröffentlicht
                   </span>
                 } @else {
-                  <span class="badge border-none bg-warning/10 text-warning-content badge-sm py-3 w-32 font-semibold">
+                  <span data-cy="admin-tech-status" class="badge border-none bg-warning/10 text-warning-content badge-sm py-3 w-32 font-semibold">
                     Entwurf
                   </span>
                 }
@@ -51,18 +51,18 @@
             <td class="text-right">
               <div class="flex justify-end gap-2">
                 @if (!tech.published) {
-                  <button (click)="openPublishModal(tech)" class="btn btn-ghost btn-sm border-base-300">
+                  <button data-cy="admin-publish-btn" (click)="openPublishModal(tech)" class="btn btn-ghost btn-sm border-base-300">
                     Publizieren
                   </button>
                 } @else {
-                  <button (click)="openEditModal(tech)" class="btn btn-ghost btn-sm border-base-300" title="Informationen bearbeiten">
+                  <button data-cy="admin-edit-btn" (click)="openEditModal(tech)" class="btn btn-ghost btn-sm border-base-300" title="Informationen bearbeiten">
                     Editieren
                   </button>
-                  <button (click)="openUpdateRingModal(tech)" class="btn btn-ghost btn-sm border-base-300" title="Ring ändern">
+                  <button data-cy="admin-update-ring-btn" (click)="openUpdateRingModal(tech)" class="btn btn-ghost btn-sm border-base-300" title="Ring ändern">
                     Einordnung ändern
                   </button>
                 }
-                <button (click)="openDeleteConfirm(tech)" class="btn btn-ghost btn-sm text-error hover:bg-error hover:text-white border-none"
+                <button data-cy="admin-delete-btn" (click)="openDeleteConfirm(tech)" class="btn btn-ghost btn-sm text-error hover:bg-error hover:text-white border-none"
                   title="Technologie löschen">
                   Löschen
                 </button>
@@ -81,12 +81,12 @@
   </div>
 </div>
 
-<dialog id="delete_confirm_modal" class="modal" tabindex="-1">
+<dialog id="delete_confirm_modal" data-cy="admin-delete-modal" class="modal" tabindex="-1">
   <div class="modal-box">
     <h3 class="font-bold text-lg">Wirklich Löschen?</h3>
     <div class="modal-action">
-      <button class="btn" type="button" (click)="cancelDelete()">Abbrechen</button>
-      <button class="btn btn-error" type="button" (click)="confirmDelete()">Löschen</button>
+      <button data-cy="admin-delete-cancel" class="btn" type="button" (click)="cancelDelete()">Abbrechen</button>
+      <button data-cy="admin-delete-confirm" class="btn btn-error" type="button" (click)="confirmDelete()">Löschen</button>
     </div>
   </div>
 </dialog>

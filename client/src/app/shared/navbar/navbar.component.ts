@@ -1,6 +1,6 @@
-import {Component, computed, inject} from '@angular/core';
+import {Component, computed, ElementRef, inject, ViewChild} from '@angular/core';
 import { LogoutButtonComponent } from '../../core/logout-button/logout-button.component';
-import {Router, RouterLink} from '@angular/router';
+import {RouterLink} from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ROLE_CLAIM} from '../constants/tech-radar.constatns';
@@ -18,7 +18,7 @@ import {ROLE_CLAIM} from '../constants/tech-radar.constatns';
       </div>
       <div class="flex gap-2">
         <div class="dropdown dropdown-end">
-          <div data-cy="nav-avatar-dropdown" tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+          <div #dropdownTrigger data-cy="nav-avatar-dropdown" tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
             <div class="w-10 rounded-full">
               <img
                 alt="Tailwind CSS Navbar component"
@@ -30,7 +30,7 @@ import {ROLE_CLAIM} from '../constants/tech-radar.constatns';
             tabindex="-1"
             class="menu menu-lg dropdown-content bg-base-200 rounded-box z-[999] mt-3 w-52 p-2 shadow">
             @if (isAdmin()) {
-              <li><a data-cy="nav-admin-link" routerLink="/radar-admin">Radar Admin</a></li>
+              <li><a data-cy="nav-admin-link" routerLink="/radar-admin" (click)="closeDropdown()">Radar Admin</a></li>
             }
             <li><app-logout-button /></li>
           </ul>
@@ -41,6 +41,8 @@ import {ROLE_CLAIM} from '../constants/tech-radar.constatns';
   styles: ``,
 })
 export class NavbarComponent {
+  @ViewChild('dropdownTrigger') dropdownTrigger!: ElementRef<HTMLElement>;
+
   constructor() {
     console.log(this.isAdmin());
   }
@@ -54,4 +56,8 @@ export class NavbarComponent {
     return Array.isArray(roles) && roles.includes('admin');
   });
 
+  closeDropdown() {
+    this.dropdownTrigger?.nativeElement.blur();
+    (document.activeElement as HTMLElement)?.blur();
+  }
 }

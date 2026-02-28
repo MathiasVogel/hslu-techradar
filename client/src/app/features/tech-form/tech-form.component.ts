@@ -69,7 +69,12 @@ export class TechFormComponent {
   onSubmit() {
     if (this.techForm.invalid) return;
 
-    const payload = this.techForm.getRawValue();
+    const raw = this.techForm.getRawValue();
+    const payload = {
+      ...raw,
+      ring: raw.ring || undefined,
+      justification: raw.justification || undefined,
+    };
     const editId = this.editData()?.id;
 
     if (editId) {
