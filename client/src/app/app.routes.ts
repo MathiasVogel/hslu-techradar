@@ -11,7 +11,7 @@ export const routes: Routes = [
     component: LayoutComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'home', title: 'Home', component: HomeComponent },
+      { path: '', title: 'Home', component: HomeComponent },
       { path: 'radar', title: 'Radar', component: RadarComponent },
       { path: 'radar-admin', title: 'Radar Administration', component: RadarAdministrationComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' }

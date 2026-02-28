@@ -11,7 +11,7 @@ import {ROLE_CLAIM} from '../constants/tech-radar.constatns';
   template: `
     <div class="navbar bg-primary shadow-sm">
       <div>
-        <a routerLink="/home" class="btn btn-ghost text-2xl">Home</a>
+        <a routerLink="/" class="btn btn-ghost text-2xl">Home</a>
       </div>
       <div class="flex-1">
         <a routerLink="/radar" class="btn btn-ghost text-2xl">Radar</a>
