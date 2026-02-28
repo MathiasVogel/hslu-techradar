@@ -1,3 +1,5 @@
+const auth0Domain = Cypress.expose('auth0_domain');
+
 describe('Anmelden Technologie-Radar-Administration', function () {
 
   it('Mittels korrektem Benutzername und korrektem Passwort und der Rolle Admin gelange ich zur Administration.', function () {

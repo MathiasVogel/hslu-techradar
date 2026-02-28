@@ -27,7 +27,6 @@ describe('User Story 3 – Technologie publizieren', function () {
 
   it('Entwürfe haben einen "Publizieren"-Button, veröffentlichte nicht', function () {
     cy.get('[data-cy="admin-table"]').within(() => {
-      // Entwurf hat Publizieren-Button
       cy.get('[data-cy="admin-tech-row"]')
         .filter(':contains("React")')
         .within(() => {
@@ -55,6 +54,7 @@ describe('User Story 3 – Technologie publizieren', function () {
     cy.get('[data-cy="tech-form-name"]').should('be.disabled');
     cy.get('[data-cy="tech-form-category"]').should('be.disabled');
     cy.get('[data-cy="tech-form-description"]').should('be.disabled');
+    cy.get('[data-cy="tech-form-cancel"]').click();
   });
 
   it('Beim Publizieren sind Ring und Begründung Pflichtfelder – Speichern ist ohne sie deaktiviert', function () {
@@ -67,12 +67,11 @@ describe('User Story 3 – Technologie publizieren', function () {
     });
 
     cy.get('[data-cy="tech-form-modal"]').should('be.visible');
-
-    cy.get('[data-cy="tech-form-ring"]').select('Trial');
+    cy.get('[data-cy="tech-form-ring"]').select('TRIAL');
     cy.get('[data-cy="tech-form-justification"]').clear();
     cy.get('[data-cy="tech-form-submit"]').should('be.disabled');
+    cy.get('[data-cy="tech-form-cancel"]').click();
   });
-
 
   it('Technologie erfolgreich publizieren mit Ring und Begründung', function () {
     cy.get('[data-cy="admin-table"]').within(() => {
@@ -90,7 +89,6 @@ describe('User Story 3 – Technologie publizieren', function () {
 
     cy.get('[data-cy="tech-form-submit"]').should('not.be.disabled');
     cy.get('[data-cy="tech-form-submit"]').click();
-
     cy.get('[data-cy="tech-form-modal"]').should('not.be.visible');
 
     cy.get('[data-cy="admin-table"]').within(() => {
@@ -120,7 +118,6 @@ describe('User Story 3 – Technologie publizieren', function () {
     cy.get('[data-cy="tech-form-submit"]').click();
     cy.get('[data-cy="tech-form-modal"]').should('not.be.visible');
 
-    // Zum Radar navigieren und prüfen
     cy.navigateToRadar();
     cy.get('[data-cy="radar-blip-Go"]').should('be.visible');
   });

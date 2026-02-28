@@ -7,6 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run --headless",
     "generate-types": "npx openapi-typescript http://localhost:3000/api-spec -o src/app/core/api/schema.d.ts"
   },
   "prettier": {

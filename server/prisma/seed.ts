@@ -153,7 +153,8 @@ async function main() {
       ring: Ring.TRIAL,
       description: 'Open-Source Backend-as-a-Service auf Postgres-Basis.',
       justification: 'Schneller MVP-Start mit Auth, Storage und Realtime-Features.',
-      published: false
+      published: true,
+      publishedAt: new Date('2024-04-10')
     },
     {
       name: 'Azure Container Apps',
