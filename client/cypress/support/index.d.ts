@@ -4,7 +4,8 @@ declare global {
       loginToAuth0(username: string, password: string): Chainable<void>;
       loginAsAdmin(): Chainable<void>;
       loginAsUser(): Chainable<void>;
-      acceptAuth0Consent(): Chainable<void>;
+      navigateToAdmin(): Chainable<void>;
+      navigateToRadar(): Chainable<void>;
     }
 
     interface Cypress {

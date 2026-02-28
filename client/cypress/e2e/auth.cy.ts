@@ -4,16 +4,16 @@ describe('Auth', function () {
 
   it('Einloggen als Admin und Adminseite besuchen', function () {
     cy.loginAsAdmin();
-    cy.get('.dropdown.dropdown-end .btn-circle').click();
-    cy.get('.dropdown-content').should('be.visible');
-    cy.get('.dropdown-content').contains('a', 'Radar Admin').should('be.visible');
+    cy.get('[data-cy="nav-avatar-dropdown"]').click();
+    cy.get('[data-cy="nav-dropdown-menu"]').should('be.visible');
+    cy.get('[data-cy="nav-admin-link"]').should('be.visible');
   })
 
   it('Einloggen als User und Admiseite ist nicht auffindbar', function () {
     cy.loginAsUser();
-    cy.get('.dropdown.dropdown-end .btn-circle').click();
-    cy.get('.dropdown-content').should('be.visible');
-    cy.get('.dropdown-content').contains('a', 'Radar Admin').should('not.exist');
+    cy.get('[data-cy="nav-avatar-dropdown"]').click();
+    cy.get('[data-cy="nav-dropdown-menu"]').should('be.visible');
+    cy.get('[data-cy="nav-admin-link"]').should('not.exist');
 
   })
 
@@ -29,9 +29,6 @@ describe('Auth', function () {
 
     if (auth0Domain) {
       cy.origin(auth0Domain, () => {
-        cy.get('.dropdown.dropdown-end .btn-circle').click();
-        cy.get('.dropdown-content').should('be.visible');
-        cy.get('.dropdown-content').contains('a', 'Radar Admin').should('not.exist');
         cy.contains('[role=alert], .alert, .auth0-global-message', 'Wrong').should('be.visible');
       });
     }
@@ -41,9 +38,9 @@ describe('Auth', function () {
   it('Einloggen und dann Ausloggen funktioniert', function () {
     cy.loginAsUser();
 
-    cy.get('.dropdown.dropdown-end .btn-circle').click();
-    cy.get('.dropdown-content').should('be.visible');
-    cy.get('.dropdown-content').contains('button', 'Log Out').click();
+    cy.get('[data-cy="nav-avatar-dropdown"]').click();
+    cy.get('[data-cy="nav-dropdown-menu"]').should('be.visible');
+    cy.get('[data-cy="nav-logout"]').click();
 
     if (auth0Domain) {
       cy.origin(auth0Domain, () => {

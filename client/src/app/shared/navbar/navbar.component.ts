@@ -11,14 +11,14 @@ import {ROLE_CLAIM} from '../constants/tech-radar.constatns';
   template: `
     <div class="navbar bg-primary shadow-sm">
       <div>
-        <a routerLink="/" class="btn btn-ghost text-2xl">Home</a>
+        <a data-cy="nav-home" routerLink="/" class="btn btn-ghost text-2xl">Home</a>
       </div>
       <div class="flex-1">
-        <a routerLink="/radar" class="btn btn-ghost text-2xl">Radar</a>
+        <a data-cy="nav-radar" routerLink="/radar" class="btn btn-ghost text-2xl">Radar</a>
       </div>
       <div class="flex gap-2">
         <div class="dropdown dropdown-end">
-          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+          <div data-cy="nav-avatar-dropdown" tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
             <div class="w-10 rounded-full">
               <img
                 alt="Tailwind CSS Navbar component"
@@ -26,10 +26,11 @@ import {ROLE_CLAIM} from '../constants/tech-radar.constatns';
             </div>
           </div>
           <ul
+            data-cy="nav-dropdown-menu"
             tabindex="-1"
             class="menu menu-lg dropdown-content bg-base-200 rounded-box z-[999] mt-3 w-52 p-2 shadow">
             @if (isAdmin()) {
-              <li><a routerLink="/radar-admin">Radar Admin</a></li>
+              <li><a data-cy="nav-admin-link" routerLink="/radar-admin">Radar Admin</a></li>
             }
             <li><app-logout-button /></li>
           </ul>

@@ -1,8 +1,7 @@
-describe('Auth', function () {
+describe('Radar-View', function () {
   let test = it('Auf dem Radar wurd die Veröffentlichte Technologie Docker angezeigt', function () {
     cy.loginAsUser();
-    cy.visit('/radar');
-    cy.acceptAuth0Consent();
+    cy.navigateToRadar()
     cy.get('[data-cy="radar-title"]').should('be.visible');
 
     cy.get('[data-cy="radar-category-Werkzeuge"]')
@@ -20,8 +19,7 @@ describe('Auth', function () {
 
   it('Bei der Technologie Grafana den Dialog öffnen und die anzeigen kontrolliern', function () {
     cy.loginAsUser();
-    cy.visit('/radar');
-    cy.acceptAuth0Consent();
+    cy.navigateToRadar()
 
     cy.get('[data-cy="radar-blip-Grafana"]').click();
 
@@ -39,8 +37,7 @@ describe('Auth', function () {
 
   it('Auf dem Radar prüfen ob die Technologie Terraform in der Richtigen Kategorie und Ring angezeigt wird', function () {
     cy.loginAsUser();
-    cy.visit('/radar');
-    cy.acceptAuth0Consent();
+    cy.navigateToRadar()
 
     cy.get('[data-cy="radar-category-Werkzeuge"]')
       .within(() => {
@@ -52,8 +49,7 @@ describe('Auth', function () {
 
   it('Auf dem Radar prüfen ob die Technologie TDD in der Richtigen Kategorie und Ring angezeigt wird', function () {
     cy.loginAsUser();
-    cy.visit('/radar');
-    cy.acceptAuth0Consent();
+    cy.navigateToRadar()
 
     cy.get('[data-cy="radar-category-Techniken"]')
       .within(() => {

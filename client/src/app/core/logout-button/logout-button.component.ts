@@ -7,6 +7,7 @@ import { AuthService } from '@auth0/auth0-angular';
   standalone: true,
   template: `
     <button
+      data-cy="nav-logout"
       (click)="logout()"
       class="button logout"
     >

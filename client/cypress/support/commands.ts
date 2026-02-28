@@ -57,10 +57,16 @@ Cypress.Commands.add('loginAsUser', () => {
   )
 })
 
-Cypress.Commands.add('acceptAuth0Consent', () => {
-  cy.origin(Cypress.expose('auth0_domain'), () => {
-    cy.get('button[value="accept"]').click();
-  });
+Cypress.Commands.add('navigateToRadar', () => {
+  cy.get('[data-cy="nav-radar"]').click();
+  cy.url().should('include', '/radar');
+});
+
+Cypress.Commands.add('navigateToAdmin', () => {
+  cy.get('[data-cy="nav-avatar-dropdown"]').click();
+  cy.get('[data-cy="nav-dropdown-menu"]').should('be.visible');
+  cy.get('[data-cy="nav-admin-link"]').click();
+  cy.url().should('include', '/radar-admin');
 });
 
 export {};
