@@ -37,7 +37,24 @@ Cypress.Commands.add('loginToAuth0', (username: string, password: string) => {
       cy.contains('button[value=default]', 'Continue').click()
     }
   )
+
   cy.url().should('equal', 'http://localhost:4200/')
+});
+
+Cypress.Commands.add('loginAsAdmin', () => {
+  cy.env(['ADMIN_USERNAME', 'ADMIN_PASSWORD']).then(
+    ({ ADMIN_USERNAME, ADMIN_PASSWORD }) => {
+      cy.loginToAuth0(ADMIN_USERNAME, ADMIN_PASSWORD)
+    }
+  )
+})
+
+Cypress.Commands.add('loginAsUser', () => {
+  cy.env(['USER_USERNAME', 'USER_PASSWORD']).then(
+    ({ USER_USERNAME, USER_PASSWORD }) => {
+      cy.loginToAuth0(USER_USERNAME, USER_PASSWORD)
+    }
+  )
 })
 
 export {};

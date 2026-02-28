@@ -3,28 +3,17 @@ const auth0Domain = Cypress.expose('auth0_domain');
 describe('Auth', function () {
 
   it('Einloggen als Admin und Adminseite besuchen', function () {
-    cy.env(['ADMIN_USERNAME', 'ADMIN_PASSWORD']).then(
-      ({ ADMIN_USERNAME, ADMIN_PASSWORD }) => {
-        cy.loginToAuth0(ADMIN_USERNAME, ADMIN_PASSWORD)
-
-        cy.get('.dropdown.dropdown-end .btn-circle').click();
-        cy.get('.dropdown-content').should('be.visible');
-        cy.get('.dropdown-content').contains('a', 'Radar Admin').should('be.visible');
-      }
-    )
-
+    cy.loginAsAdmin();
+    cy.get('.dropdown.dropdown-end .btn-circle').click();
+    cy.get('.dropdown-content').should('be.visible');
+    cy.get('.dropdown-content').contains('a', 'Radar Admin').should('be.visible');
   })
 
   it('Einloggen als User und Admiseite ist nicht auffindbar', function () {
-    cy.env(['USER_USERNAME', 'USER_PASSWORD']).then(
-      ({ USER_USERNAME, USER_PASSWORD }) => {
-        cy.loginToAuth0(USER_USERNAME, USER_PASSWORD)
-
-        cy.get('.dropdown.dropdown-end .btn-circle').click();
-        cy.get('.dropdown-content').should('be.visible');
-        cy.get('.dropdown-content').contains('a', 'Radar Admin').should('not.exist');
-      }
-    )
+    cy.loginAsUser();
+    cy.get('.dropdown.dropdown-end .btn-circle').click();
+    cy.get('.dropdown-content').should('be.visible');
+    cy.get('.dropdown-content').contains('a', 'Radar Admin').should('not.exist');
 
   })
 
@@ -50,24 +39,19 @@ describe('Auth', function () {
   })
 
   it('Einloggen und dann Ausloggen funktioniert', function () {
-    cy.env(['USER_USERNAME', 'USER_PASSWORD']).then(
-      ({ USER_USERNAME, USER_PASSWORD }) => {
-        cy.loginToAuth0(USER_USERNAME, USER_PASSWORD)
+    cy.loginAsUser();
 
-        cy.get('.dropdown.dropdown-end .btn-circle').click();
-        cy.get('.dropdown-content').should('be.visible');
-        cy.get('.dropdown-content').contains('button', 'Log Out').click();
+    cy.get('.dropdown.dropdown-end .btn-circle').click();
+    cy.get('.dropdown-content').should('be.visible');
+    cy.get('.dropdown-content').contains('button', 'Log Out').click();
 
-        if (auth0Domain) {
-          cy.origin(auth0Domain, () => {
-            cy.url().should('include', '/u/login');
-            cy.get('input#username').should('be.visible');
-          });
-        } else {
-          cy.url().should('include', 'auth0');
-        }
-      }
-    )
-
+    if (auth0Domain) {
+      cy.origin(auth0Domain, () => {
+        cy.url().should('include', '/u/login');
+        cy.get('input#username').should('be.visible');
+      });
+    } else {
+      cy.url().should('include', 'auth0');
+    }
   })
 })
