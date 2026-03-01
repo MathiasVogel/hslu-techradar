@@ -3,7 +3,7 @@
 
 @plugin "daisyui/theme" {
   name: "lofi";
-  default: false;
+  default: true;
   prefersdark: false;
   color-scheme: "dark";
   --color-base-100: oklch(100% 0 0);

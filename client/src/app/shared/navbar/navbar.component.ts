@@ -9,12 +9,12 @@ import {ROLE_CLAIM} from '../constants/tech-radar.constatns';
   selector: 'app-navbar',
   imports: [LogoutButtonComponent, RouterLink],
   template: `
-    <div class="navbar bg-primary shadow-sm">
+    <div class="navbar bg-primary text-primary-content shadow-sm">
       <div>
-        <a data-cy="nav-home" routerLink="/" class="btn btn-ghost text-2xl">Home</a>
+        <a data-cy="nav-home" routerLink="/" class="btn btn-ghost text-primary-content text-2xl">Home</a>
       </div>
       <div class="flex-1">
-        <a data-cy="nav-radar" routerLink="/radar" class="btn btn-ghost text-2xl">Radar</a>
+        <a data-cy="nav-radar" routerLink="/radar" class="btn btn-ghost text-primary-content text-2xl">Radar</a>
       </div>
       <div class="flex gap-2">
         <div class="dropdown dropdown-end">
@@ -28,7 +28,7 @@ import {ROLE_CLAIM} from '../constants/tech-radar.constatns';
           <ul
             data-cy="nav-dropdown-menu"
             tabindex="-1"
-            class="menu menu-lg dropdown-content bg-base-200 rounded-box z-[999] mt-3 w-52 p-2 shadow">
+            class="menu menu-lg dropdown-content bg-base-200 text-base-content rounded-box z-[999] mt-3 w-52 p-2 shadow">
             @if (isAdmin()) {
               <li><a data-cy="nav-admin-link" routerLink="/radar-admin" (click)="closeDropdown()">Radar Admin</a></li>
             }

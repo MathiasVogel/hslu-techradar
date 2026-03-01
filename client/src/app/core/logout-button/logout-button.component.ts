@@ -9,7 +9,7 @@ import { AuthService } from '@auth0/auth0-angular';
     <button
       data-cy="nav-logout"
       (click)="logout()"
-      class="button logout"
+      class="btn btn-ghost text-base-content"
     >
       Log Out
     </button>
