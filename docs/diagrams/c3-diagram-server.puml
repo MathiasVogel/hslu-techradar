@@ -1,0 +1,19 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+skinparam RoundCorner 15
+
+Container_Boundary(api, "Express REST API") {
+  Component(routes, "TechRoutes", "Express Router", "REST-Endpunkte\nGET / POST / PATCH / DELETE")
+  Component(controller, "TechController", "Express", "Request-Handling &\nValidierung")
+  Component(service, "TechService", "Node.js", "Business-Logik")
+  Component(prisma, "Prisma Client", "Prisma ORM", "Datenbankzugriff")
+  Component(swagger, "Swagger", "swagger-jsdoc", "API-Dokumentation")
+}
+
+Rel(routes, controller, "Delegiert")
+Rel(controller, service, "Aufrufe")
+Rel(service, prisma, "Queries")
+Rel(routes, swagger, "Dokumentiert")
+
+@enduml

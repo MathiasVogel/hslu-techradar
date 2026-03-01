@@ -3,21 +3,6 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-introduction-and-goals]]
 ==	Einführung und Ziele
 
-ifdef::arc42help[]
-[role="arc42help"]
-****
-Beschreibt die wesentlichen Anforderungen und treibenden Kräfte, die bei der Umsetzung der Softwarearchitektur und Entwicklung des Systems berücksichtigt werden müssen.
-
-Dazu gehören:
-
-* zugrunde liegende Geschäftsziele,
-* wesentliche Aufgabenstellungen,
-* wesentliche funktionale Anforderungen,
-* Qualitätsziele für die Architektur und
-* relevante Stakeholder und deren Erwartungshaltung.
-****
-endif::arc42help[]
-
 === Aufgabenstellung
 
 ==== User Story 1: Anmelden Technologie-Radar-Administration (Prio 'Could')
@@ -117,30 +102,9 @@ Als Mitarbeiter kann ich mich am Technologie-Radar-Viewer anmelden, damit ich di
 
 === Stakeholder
 
-ifdef::arc42help[]
-[role="arc42help"]
-****
-.Inhalt
-Expliziter Überblick über die Stakeholder des Systems – über alle Personen, Rollen oder Organisationen –, die
-
-* die Architektur kennen sollten oder
-* von der Architektur überzeugt werden müssen,
-* mit der Architektur oder dem Code arbeiten (z.B. Schnittstellen nutzen),
-* die Dokumentation der Architektur für ihre eigene Arbeit benötigen,
-* Entscheidungen über das System und dessen Entwicklung treffen.
-
-.Motivation
-Sie sollten die Projektbeteiligten und -betroffenen kennen, sonst erleben Sie später im Entwicklungsprozess Überraschungen.
-Diese Stakeholder bestimmen unter anderem Umfang und Detaillierungsgrad der von Ihnen zu leistenden Arbeit und Ergebnisse.
-
-.Form
-Tabelle mit Rollen- oder Personennamen, sowie deren Erwartungshaltung bezüglich der Architektur und deren Dokumentation.
-****
-endif::arc42help[]
-
 [cols="1,1,2" options="header"]
 |===
 |Rolle |Kontakt |Erwartungshaltung
-| Auftraggeber | Dominik Witschard | _<Erwartung-1>_
-| Entwickler | Mathias Vogel | _<Erwartung-2>_
+| Auftraggeber | Dominik Witschard | Erwartet eine funktionsfähige Software, die die Anforderungen erfüllt und die Ziele erreicht.
+| Entwickler | Mathias Vogel | Legt Wert darauf, dass das Projekt gut strukturiert ist, damit man sich im Code schnell zurechtfindet. Er erwartet, dass wichtige Abläufe durch Tests abgesichert sind, um bei Updates keine bestehenden Funktionen zu zerschiessen.
 |===

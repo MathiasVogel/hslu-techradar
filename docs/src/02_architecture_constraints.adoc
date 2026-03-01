@@ -3,25 +3,16 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-architecture-constraints]]
 == Randbedingungen
 
-ifdef::arc42help[]
-[role="arc42help"]
-****
-.Inhalt
-Randbedingungen und Vorgaben, die ihre Freiheiten bezüglich Entwurf, Implementierung oder Ihres Entwicklungsprozesses einschränken.
-Diese Randbedingungen gelten manchmal organisations- oder firmenweit über die Grenzen einzelner Systeme hinweg.
+Die folgenden technischen und organisatorischen Vorgaben bilden den Rahmen für die Entwicklung des Technologie-Radars:
 
-.Motivation
-Für eine tragfähige Architektur sollten Sie genau wissen, wo Ihre Freiheitsgrade bezüglich der Entwurfsentscheidungen liegen und wo Sie Randbedingungen beachten müssen.
-Sie können Randbedingungen vielleicht noch verhandeln, zunächst sind sie aber da.
-
-.Form
-Einfache Tabellen der Randbedingungen mit Erläuterungen.
-Bei Bedarf unterscheiden Sie technische, organisatorische und politische Randbedingungen oder übergreifende Konventionen (beispielsweise Programmier- oder Versionierungsrichtlinien, Dokumentations- oder Namenskonvention).
-
-
-.Weiterführende Informationen
-
-Siehe https://docs.arc42.org/section-2/[Randbedingungen] in der online-Dokumentation (auf Englisch!).
-
-****
-endif::arc42help[]
+[cols="1,2,3", options="header"]
+|===
+| Typ | Bedingung | Erläuterung
+| Organisatorisch | **Einzelarbeit** | Das Projekt muss in Einzelarbeit ungesetzt werden.
+| Organisatorisch | **Aufwand (ca. 60h)** | Der gesamte Umfang für Implementierung und Dokumentation sollte ca. 60 Stunden betragen.
+| Organisatorisch | **Zeitplan** | Der Abgabetermin für das Projekt ist der 6. März.
+| Technisch | **Web-Stack** | Es soll eine Web-Applikation entwickelt werden, die Angular im Frontend und Node.js im Backend verwendet.
+| Technisch | **Datenpersistenz** | Die Daten müssen in irgendeiner Form persistiert werden.
+| Konvention | **Testabdeckung** | Sicherstellung der Qualität durch eine angemessene Abdeckung mit Unit- und E2E-Tests (Cypress).
+| Konvention | **Dokumentation** | Die Architektur muss dokumentiert werden.
+|===

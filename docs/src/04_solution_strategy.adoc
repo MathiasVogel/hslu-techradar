@@ -3,30 +3,35 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-solution-strategy]]
 == Lösungsstrategie
 
-ifdef::arc42help[]
-[role="arc42help"]
-****
-.Inhalt
-Kurzer Überblick über die grundlegenden Entscheidungen und Lösungsansätze, die Entwurf und Implementierung des Systems prägen.
-Hierzu gehören:
+[cols="2,3,3", options="header"]
+|===
+| Ziel / Anforderung | Lösungsansatz | Umsetzung
 
-* Technologieentscheidungen
-* Entscheidungen über die Top-Level-Zerlegung des Systems, beispielsweise die Verwendung gesamthaft prägender Entwurfs- oder Architekturmuster,
-* Entscheidungen zur Erreichung der wichtigsten Qualitätsanforderungen sowie
-* relevante organisatorische Entscheidungen, beispielsweise für bestimmte Entwicklungsprozesse oder Delegation bestimmter Aufgaben an andere Stakeholder.
+| **Client-Server-Architektur**
+| Trennung von Frontend und Backend als eigenständige Applikationen
+| Angular (Client) kommuniziert via REST-API mit Express/Node.js. Typsicherheit durch OpenAPI-Generierung.
 
-.Motivation
-Diese wichtigen Entscheidungen bilden wesentliche „Eckpfeiler“ der Architektur.
-Von ihnen hängen viele weitere Entscheidungen oder Implementierungsregeln ab.
+| **Datenpersistenz**
+| Relationale Datenbank mit typsicherem ORM
+| PostgreSQL als Datenbank, Prisma ORM für Schema-Management, Migrationen und typsicheren Datenbankzugriff.
 
-.Form
-Fassen Sie die zentralen Entwurfsentscheidungen *kurz* zusammen.
-Motivieren Sie, ausgehend von Aufgabenstellung, Qualitätszielen und Randbedingungen, was Sie entschieden haben und warum Sie so entschieden haben.
-Vermeiden Sie redundante Beschreibungen und verweisen Sie eher auf weitere Ausführungen in Folgeabschnitten.
+| **Authentifizierung & Autorisierung**
+| Delegierte Authentifizierung über einen externen Identity Provider
+| Auth0 (OAuth 2.0 / OIDC) übernimmt Login und Rollenverwaltung (CTO/Mitarbeiter).
 
-.Weiterführende Informationen
+| **Responsive Darstellung**
+| Mobile-/Tablet-optimierter Viewer
+| Tailwind CSS mit responsiven Breakpoints für Desktop und Mobile.
 
-Siehe https://docs.arc42.org/section-4/[Lösungsstrategie] in der online-Dokumentation (auf Englisch!).
+| **Testabdeckung**
+| Qualitätssicherung durch automatisierte Tests auf mehreren Ebenen
+| E2E-Tests mit Cypress; Unit- und Integrationstests mit Vitest und Supertest.
 
-****
-endif::arc42help[]
+| **Containerisierung**
+| Reproduzierbare Entwicklungs- und Deployment-Umgebung
+| Docker Compose orchestriert Client, Server und Datenbank.
+
+| **API-Dokumentation**
+| Selbstdokumentierende API
+| Swagger UI generiert interaktive Dokumentation direkt aus dem Backend-Code.
+|===

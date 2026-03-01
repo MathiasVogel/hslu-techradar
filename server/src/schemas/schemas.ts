@@ -1,7 +1,6 @@
 import { Category, Ring } from '../generated/client/client.js';
 
 export const schemas = {
-  // 1. Das komplette Modell (für GET Antworten)
   TechnologyDTO: {
     type: 'object',
     required: ['id', 'name', 'category', 'description', 'published'],
@@ -27,7 +26,6 @@ export const schemas = {
     }
   },
 
-  // 2. Zum Erstellen (POST)
   TechnologyCreateDTO: {
     type: 'object',
     required: ['name', 'category', 'description'],
@@ -47,7 +45,6 @@ export const schemas = {
     }
   },
 
-  // 3. Zum Updaten (PATCH) - Alles optional
   TechnologyUpdateDTO: {
     type: 'object',
     properties: {

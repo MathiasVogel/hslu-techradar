@@ -1,0 +1,26 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+skinparam RoundCorner 15
+
+Container_Boundary(spa, "Angular SPA") {
+  Component(navbar, "NavbarComponent", "Angular", "Navigation & Logout")
+  Component(home, "HomeComponent", "Angular", "Startseite")
+  Component(radar, "RadarComponent", "Angular", "Radar-Visualisierung")
+  Component(radarAdmin, "RadarAdministrationComponent", "Angular", "Technologie-Verwaltung")
+  Component(techForm, "TechFormComponent", "Angular", "Erfassen / Bearbeiten /\nPublizieren")
+  Component(techDetail, "TechDetailComponent", "Angular", "Technologie-Detailansicht")
+  Component(techService, "TechService", "Angular Service", "State-Management &\nAPI-Kommunikation")
+  Component(apiClient, "OpenAPI Client", "openapi-fetch", "Typisierter HTTP-Client")
+}
+
+Rel(navbar, home, "Routing")
+Rel(navbar, radar, "Routing")
+Rel(navbar, radarAdmin, "Routing")
+Rel(radarAdmin, techForm, "Öffnet")
+Rel(radar, techDetail, "Öffnet")
+Rel(radarAdmin, techService, "CRUD-Aufrufe")
+Rel(radar, techService, "Liest Daten")
+Rel(techService, apiClient, "HTTP-Aufrufe")
+
+@enduml

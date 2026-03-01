@@ -1,0 +1,97 @@
+ifndef::imagesdir[:imagesdir: ../images]
+
+[[section-design-decisions]]
+== Arbeitsjournal
+
+*Studen Total: 76*
+
+[cols="1,1,4" options="header"]
+|===
+|Datum |Stunden | Tätigkeiten
+
+|04.02.2025
+|2
+a|
+* Projekt-Stack definieren und einsenden
+
+|05.02.2025
+|5
+a|
+* Dokumentationen initialisieren mit AsciiDoc und erste Inhalte anlegen
+* Projektstruktur aufsetzen
+* Client initialisieren mit Angular
+* Repo aufsetzen und initiale Commits durchführen
+
+|06.02.2025
+|7
+a|
+* Server initialisieren mit Typescript, NodeJS und Express
+* Docker Compose aufsetzen für DB
+* Prisma aufsetzen und DB Schema anlegen
+* Seed-Daten anlegen und Endpunkt implementieren
+
+|07.02.2025
+|4
+a|
+* Endpunkte definieren und implementieren
+* Endpunkte Dokumentieren mit Swagger
+
+|08.02.2025
+|8
+a|
+* Auth0 implementieren
+* Dockerisierung der Applikation
+* DB Schema anpassen und Probleme mit Prisma lösen
+* Chapter 1 der Dokumentation schreiben
+
+|12.02.2025
+|8
+a|
+* Radar View implementieren mit Dialog für Details
+* Routing implementieren
+* Component Struktur mit Layout aufbauen
+
+|13.02.2025
+|4
+a|
+* Angular Service für Techologien implementieren
+
+
+|24.02.2025
+|5
+a|
+* Admin Page implementieren
+* Tech-Formular aufbauen und Logik implementieren
+* Tech-Formular verbessern und Validierung hinzufügen
+
+
+|26.02.2025
+|5
+a|
+* Create und Update Calls implementieren
+* Tech-Formular verbessern und Validierung hinzufügen
+
+|27.02.2025
+|8
+a|
+* Logik für Veröffentlichungsdatum implementieren
+* Rolleninformationen in Auth0 anlegen
+* File-Struktur verbessern
+* Home Page implementieren
+* Delete Call implementieren
+* Server Unit-Test mit Vitest und Supertest implementieren
+* Client Unit-Tests mit Vitest implementieren
+
+|28.02.2025
+|10
+a|
+* Cypress aufsetzen und commands implementieren
+* Cypress E2E-Tests implementieren
+* README's erstellen
+
+|01.03.2025
+|10
+a|
+* Dokumentation erstellen
+* Fazit schreiben
+|===

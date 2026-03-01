@@ -1,0 +1,36 @@
+ifndef::imagesdir[:imagesdir: ../images]
+
+[[section-technical-risks]]
+== Risiken und technische Schulden
+
+=== Risiken
+
+[cols="1,2,2", options="header"]
+|===
+| Risiko | Beschreibung | Massnahme
+
+| **Auth0-Abhängigkeit**
+| Die gesamte Authentifizierung hängt von einem externen Dienst ab. Bei Ausfall oder Änderungen der Auth0-API funktioniert der Login nicht mehr.
+| Auth0 bietet hohe Verfügbarkeit.
+
+| **Keine Server-seitige Token-Validierung**
+| Die REST API validiert eingehende Requests aktuell nicht gegen ein JWT-Token. Jeder, der die API-URL kennt, kann Daten verändern.
+| Sollte dringend nachgebessert werden, leider fehlte die Zeit dafür.
+
+|===
+
+=== Technische Schulden
+
+[cols="1,2,2", options="header"]
+|===
+| Schuld | Beschreibung | Auswirkung
+
+| **DB Resets bei E2E-Tests**
+| Bei den E2E-Tests wird die Datenbank zwischen den verschiedenen Test-Files nicht zurückgesetzt.
+| Einbauen eines Skripts, das die DB vor jedem Test-File auf einen definierten Zustand zurücksetzt.
+
+| **API-Aufrufe**
+| APi aufrufe haben momenten keine Fehlerbehandlung (Nur Logs im Server), was zu unhandlichen Fehlermeldungen im Client führt.
+| Statuscodes und Fehlermeldungen im Frontend korrekt behandeln.
+
+|===

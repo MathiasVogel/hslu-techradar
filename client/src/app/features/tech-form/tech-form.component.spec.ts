@@ -8,7 +8,6 @@ import { TechService } from '../../core/tech-service/tech.service';
 import { TechFormMode } from '../../shared/constants/tech-radar.constatns';
 import { TechnologyDTO } from '../../core/api/api.types';
 
-// Der Fokus liegt auf Logik/Signalen, nicht auf UI-Rendering.
 describe('TechFormComponent (vitest)', () => {
   let fixture: ComponentFixture<TechFormComponent>;
   let component: TechFormComponent;

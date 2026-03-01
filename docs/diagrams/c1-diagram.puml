@@ -1,0 +1,24 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+LAYOUT_LEFT_RIGHT()
+SHOW_PERSON_OUTLINE()
+
+skinparam RoundCorner 15
+
+Person(admin, "Administrator", "Kann Technologie-Radar verwalten")
+Person(user, "User", "Kann Technologie-Radar einsehen")
+
+System(techradar, "HSLU Techradar", "Verwaltung & Visualisierung")
+
+System_Ext(auth0, "Auth0", "Identity Provider")
+
+Lay_R(admin, user)
+
+Rel(admin, techradar, "Erfassen, Publizieren")
+Rel(user, techradar, "Einsehen")
+Rel(admin, auth0, "Anmeldung")
+Rel(user, auth0, "Anmeldung")
+Rel(auth0, techradar, "Token")
+
+@enduml

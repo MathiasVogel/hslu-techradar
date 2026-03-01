@@ -1,0 +1,29 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+SHOW_PERSON_OUTLINE()
+
+skinparam RoundCorner 15
+
+Person(admin, "Admin")
+Person(user, "User")
+
+Lay_R(admin, user)
+
+System_Boundary(techradar, "HSLU Techradar") {
+  Container(spa, "Angular SPA", "Angular, TypeScript,\nTailwind, DaisyUI", "Radar-Visualisierung\n& Administration")
+  Container(api, "REST API", "Express.js, TypeScript,\nNode.js", "REST-Endpunkte\nfür Technologien")
+  ContainerDb(db, "Datenbank", "PostgreSQL", "Technologien")
+  Lay_R(spa, api)
+  Lay_R(api, db)
+}
+
+System_Ext(auth0, "Auth0", "Identity Provider\nOAuth 2.0 / OIDC")
+
+Rel_D(admin, spa, "Erfassen, Publizieren")
+Rel_D(user, spa, "Einsehen")
+Rel_R(spa, api, "REST / JSON")
+Rel_R(api, db, "Prisma ORM")
+Rel_U(auth0, spa, "Token")
+
+@enduml

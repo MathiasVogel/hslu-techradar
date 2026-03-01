@@ -1,0 +1,56 @@
+@startuml
+
+skinparam RoundCorner 15
+skinparam sequenceMessageAlign center
+
+actor "User / Admin" as user
+participant "Angular SPA" as spa
+participant "Auth0" as auth0
+participant "REST API\n(Express)" as api
+database "PostgreSQL" as db
+
+autonumber
+
+== Anmeldung ==
+
+user -> spa : Öffnet Applikation
+spa -> auth0 : Redirect zum Login
+auth0 --> spa : Access Token (JWT)
+
+== Radar anzeigen ==
+
+user -> spa : Öffnet Radar
+spa -> api : GET /api/technologies
+api -> db : findMany()
+db --> api : Technologie-Liste
+api --> spa : 200 OK (JSON)
+spa --> user : Radar-Visualisierung\n(nur publizierte)
+
+== Technologie erfassen ==
+
+user -> spa : Füllt Formular aus
+spa -> api : POST /api/technologies
+api -> db : create(data)
+db --> api : Neue Technologie
+api --> spa : 201 Created (JSON)
+spa --> user : Bestätigung
+
+== Technologie publizieren ==
+
+user -> spa : Klickt "Publizieren"
+spa -> api : PATCH /api/technologies/{id}
+api -> db : update(data)
+db --> api : Aktualisierte Technologie
+api --> spa : 200 OK (JSON)
+spa --> user : Technologie auf Radar sichtbar
+
+== Technologie ändern ==
+
+user -> spa : Bearbeitet Technologie
+spa -> api : PATCH /api/technologies/{id}
+api -> db : update(data)
+db --> api : Aktualisierte Technologie
+api --> spa : 200 OK (JSON)
+spa --> user : Aktualisierte Ansicht
+
+@enduml

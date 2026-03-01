@@ -2,61 +2,46 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 [[section-concepts]]
 == Querschnittliche Konzepte
+=== API-Design
+Die API folgt REST-Prinzipien mit klaren Ressourcen (z.B. `/technologies`) und HTTP-Methoden (GET, POST, PATCH) für die jeweiligen Operationen.
 
-ifdef::arc42help[]
-[role="arc42help"]
-****
-.Inhalt
-Dieser Abschnitt beschreibt übergreifende, prinzipielle Regelungen und Lösungsansätze, die an mehreren Stellen (=_querschnittlich_) relevant sind.
+==== API-Dokumentation
+Die API-Dokumentation findet man unter `http://localhost:3000/api-docs` (nach Start des Servers).
 
-Solche Konzepte betreffen oft mehrere Bausteine.
-Dazu können vielerlei Themen gehören, wie beispielsweise die Themen aus dem nachfolgenden Diagramm:
+=== Testkonzept
 
-image::08-concepts-DE.drawio.png["Mögliche Themen für querschnittliche Konzepte"]
+Aufgrund der geringen Logikdichte der Einzelkomponenten (CLient und Server) und zur Vermeidung von aufwendigem Mocking wurde eine pragmatische, E2E-zentrierte Teststrategie gewählt.
 
-.Motivation
-Konzepte bilden die Grundlage für _konzeptionelle Integrität_ (Konsistenz, Homogenität) der Architektur und damit eine wesentliche Grundlage für die innere Qualität Ihrer Systeme.
+- *Schwerpunkt E2E (Cypress):* Die 7 User Stories werden direkt über den Browser validiert. Dies stellt das korrekte Zusammenspiel von Frontend, API und Datenbank ohne Mocks sicher und bietet das beste Kosten-Nutzen-Verhältnis im gegebenen Zeitrahmen.
 
-Dieser Abschnitt im Template ist der richtige Ort für die konsistente Behandlung solcher Themen.
+- *Unit-Tests (Vitest, Supertest):* Ergänzende Absicherung isolierter Logik. Hierbei werden Abhängigkeiten konsequent gemockt, um die Testausführung schnell und unabhängig von der Infrastruktur zu halten.
 
-Viele solche Konzepte beeinflussen oder beziehen sich auf mehrerer Ihrer Bausteine.
+==== Teststufen
 
-.Form
-Kann vielfältig sein:
+[cols="1,1,1", options="header"]
+|===
+| Stufe | Framework | Scope
+| **Unit-Tests**
+| Vitest + Supertest
+| Client, Server
 
-* Konzeptpapiere mit beliebiger Gliederung,
-* beispielhafte Implementierung speziell für technische Konzepte,
-* übergreifende Modelle/Szenarien mit Notationen, die Sie auch in den Architektursichten nutzen,
+| **E2E-Tests**
+| Cypress
+| Gesamte Applikation
 
+|===
 
-.Struktur
-Wählen Sie **nur** die wichtigsten Themen für Ihr System und erklären das jeweilige Konzept dann unter einer Level-2 Überschrift dieser Sektion (z.B. 8.1, 8.2 etc).
+==== Testabdeckung pro User Story
 
-Beschränken Sie sich auf die wichtigen, und versuchen **auf keinen Fall** alle oben dargestellten Themen zu bearbeiten.
+[cols="1,3,1", options="header"]
+|===
+| User Story | Beschreibung | Testdatei
+| US 1 | Anmeldung (Admin/User/Ungültig/Logout) | `user-story-1.cy.ts`
+| US 2 | Technologie erfassen (Formular, Pflichtfelder) | `user-story-2.cy.ts`
+| US 3 | Technologie publizieren (Entwurf → Publiziert) | `user-story-3.cy.ts`
+| US 4 | Technologie ändern (Name, Kategorie, Beschreibung) | `user-story-4.cy.ts`
+| US 5 | Technologie-Einordnung ändern (Ring, Begründung) | `user-story-5.cy.ts`
+| US 6 | Technologien im Radar anzeigen (Kategorien, Ringe) | `user-story-6.cy.ts`
+| US 7 | Anmeldung am Viewer (User-Login) | `user-story-7.cy.ts`
+|===
 
-.Weiterführende Informationen
-
-Einige Themen innerhalb von Systemen betreffen oft mehrere Bausteine, Hardwareelemente oder Prozesse.
-Es könnte einfacher sein, solche _Querschnittsthemen_ an einer zentralen Stelle zu kommunizieren oder zu dokumentieren, anstatt sie in der Beschreibung der betreffenden Bausteine, Hardwareelemente oder Entwicklungsprozesse zu wiederholen.
-
-Bestimmte Konzepte können **alle** Elemente eines Systems betreffen, andere sind vielleicht nur für einige wenige relevant.
-
-
-Siehe https://docs.arc42.org/section-8/[Querschnittliche Konzepte] in der online-Dokumentation (auf Englisch).
-
-****
-endif::arc42help[]
-
-=== _<Konzept 1>_
-
-_<Erklärung>_
-
-=== _<Konzept 2>_
-
-_<Erklärung>_
-
-...
-
-=== _<Konzept n>_
-
-_<Erklärung>_

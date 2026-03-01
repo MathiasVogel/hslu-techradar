@@ -1,0 +1,39 @@
+@startuml
+
+skinparam RoundCorner 15
+skinparam NodeBackgroundColor #ffffff
+skinparam NodeBorderColor #444444
+
+actor "Browser" as browser
+cloud "Auth0" as auth0
+
+node "Host-System" {
+
+  node "Docker Engine" {
+
+    node "nginx" as nginxContainer <<Container>> {
+      artifact "Nginx\n(Reverse Proxy)" as nginx
+    }
+
+    node "client" as clientContainer <<Container>> {
+      artifact "Angular SPA\n(statische Dateien)" as spa
+    }
+
+    node "server" as serverContainer <<Container>> {
+      artifact "Express API" as api
+      artifact "Prisma Client" as prisma
+    }
+
+    node "db" as dbContainer <<Container>> {
+      database "PostgreSQL 15" as db
+    }
+  }
+}
+
+browser --> nginx : "Port 80 / 443\nHTTP(S)"
+browser --> auth0 : "OAuth 2.0 / OIDC"
+nginx --> spa : "techradar.ch\n→ Port 4200"
+nginx --> api : "api-techradar.ch\n→ Port 3000"
+prisma --> db : "Port 5432\nTCP"
+
+@enduml
