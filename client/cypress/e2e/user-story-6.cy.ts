@@ -85,7 +85,7 @@ describe('User Story 6 – Technologien anzeigen', function () {
   });
 
   it('Nicht publizierte Technologien werden nicht auf dem Radar angezeigt', function () {
-    cy.get('[data-cy="radar-blip-Supabase"]').should('not.exist');
+    cy.get('[data-cy="radar-blip-WebAssembly"]').should('not.exist');
     cy.get('[data-cy="radar-blip-React"]').should('not.exist');
     cy.get('[data-cy="radar-blip-Jenkins"]').should('not.exist');
   });

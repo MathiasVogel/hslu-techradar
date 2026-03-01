@@ -112,7 +112,7 @@ describe('TechFormComponent (vitest)', () => {
       category: 'TOOLS',
       ring: 'TRIAL',
       description: 'Another UI framework',
-      justification: '',
+      justification: undefined,
       published: false
     });
     expect(mockTechService.updateTechnology).not.toHaveBeenCalled();
