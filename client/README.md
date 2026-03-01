@@ -1,59 +1,137 @@
 # Client
+Dieses Readme enthält alle Informationen für die Entwicklung und das Testen des Clients. Es beschreibt die notwendigen Schritte, um die Entwicklungsumgebung einzurichten, den Client lokal auszuführen und die Tests durchzuführen.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
+## Tech-Stack
+- **Angular 21** – Frontend-Framework
+- **Tailwind CSS 4** + **daisyUI 5** – Styling
+- **Auth0** – Authentifizierung
+- **openapi-fetch** – Typsicherer API-Client
+- **Vitest** – Unit-Tests
+- **Cypress 15** – E2E-Tests
 
-## Development server
+## Voraussetzungen
 
-To start a local development server, run:
+| Software | Version | Prüfen mit |
+|---|---|---|
+| **Node.js** | ≥ 22 | `node -v` |
+| **npm** | ≥ 10 | `npm -v` |
+| **Server** | läuft | http://localhost:3000/api-docs |
 
-```bash
-ng serve
-```
+**Wichtig:** Damit der Client korrekt funktioniert, muss der Server laufen. Bitte zuerst die Schritte im [Server README](../server/README.md) befolgen, um die Entwicklungsumgebung für den Server einzurichten und zu starten.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Einrichten der Entwicklungsumgebung
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+### 1. Abhängigkeiten installieren
+In das Root-Verzeichnis des Clients wechseln:
 
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### 2. API-Typen vom Server generieren
+Der Server muss dafür laufen (`npm run dev` im `server/`-Ordner).
 
 ```bash
-ng test
+npm run generate-types
 ```
+Generiert die TypeScript-Typen aus der OpenAPI-Spezifikation des Servers nach `src/app/core/api/schema.d.ts`.
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### 3. Client starten (Entwicklungsmodus)
 
 ```bash
-ng e2e
+npm start
 ```
+Startet den Angular-Dev-Server auf **http://localhost:4200**.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+#### Zugangsdaten
 
-## Additional Resources
+| Rolle | E-Mail | Passwort |
+|---|---|---|
+| **Admin** | `hoyt38@ethereal.email` | `Admin123` |
+| **User** | `maia3@ethereal.email` | `User1234` |
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Die Authentifizierung läuft über **Auth0** (`mathias-vogel.eu.auth0.com`).
+
+## Unit-Tests ausführen
+
+```bash
+npm test
+```
+Führt die Unit-Tests mit **Vitest** aus.
+
+## E2E-Tests (Cypress)
+
+### Voraussetzungen für E2E-Tests
+
+1. **Datenbank** muss laufen (Docker)
+2. **Server** muss laufen (`npm run dev` im `server/`-Ordner)
+3. **Client** muss laufen (`npm start` im `client/`-Ordner)
+4. **Datenbank** muss frisch geseeded sein (`npm run db:seed` im `server/`-Ordner)
+
+#### Cypress interaktiv öffnen
+
+```bash
+npm run cy:open
+```
+Öffnet die Cypress-Oberfläche in der einzelne Tests ausgewählt und im Browser ausgeführt werden können.
+
+**Wichtig:** Da nicht automatische bei Test der Seed ausgeführt wird, muss nach jedem durchlauf eines Testfiles die Datenbank neu geseeded werden.
+
+#### Cypress headless ausführen
+
+```bash
+npm run cy:run
+```
+Führt alle E2E-Tests im Headless-Modus aus (z. B. für CI/CD).
+
+**Wichtig:** Da nicht automatische bei Test der Seed ausgeführt wird, muss vor jedem Durchlauf aller Tests die Datenbank neu geseeded werden.
+
+## Nützliche Befehle
+
+| Befehl | Beschreibung |
+|---|---|
+| `npm start` | Dev-Server starten (Port 4200) |
+| `npm run build` | Produktions-Build erstellen (`dist/`) |
+| `npm test` | Unit-Tests ausführen (Vitest) |
+| `npm run cy:open` | Cypress interaktiv öffnen |
+| `npm run cy:run` | Cypress headless ausführen |
+| `npm run generate-types` | API-Typen vom Server generieren |
+
+## Projektstruktur
+
+```
+client/
+├── src/
+│   ├── main.ts
+│   ├── index.html
+│   ├── styles.css                  # Globale Styles (Tailwind CSS)
+│   ├── environments/
+│   │   └── environment.ts          # Auth0-Konfiguration
+│   └── app/
+│       ├── app.ts                  # Root-Komponente
+│       ├── app.routes.ts           # Routing
+│       ├── app.config.ts           # App-Konfiguration
+│       ├── core/
+│       │   ├── api/                # API-Client & generierte Typen
+│       │   ├── layout/             # Layout-Komponenten
+│       │   ├── logout-button/      # Logout-Komponente
+│       │   └── tech-service/       # Zentraler TechService (Signals)
+│       ├── features/
+│       │   ├── admin/              # Radar-Administration
+│       │   ├── home/               # Startseite
+│       │   ├── radar/              # Radar-Ansicht
+│       │   └── tech-form/          # Technologie-Formular
+│       └── shared/
+│           ├── navbar/             # Navigation
+│           ├── constants/          # Konstanten
+│           ├── pipes/              # TechLabel-Pipe
+│           └── tech-detail/        # Technologie-Detail
+├── cypress/
+│   ├── e2e/                        # E2E-Testdateien
+│   ├── support/                    # Custom Commands & Typen
+│   └── cypress.config.ts
+├── package.json
+├── angular.json
+├── tsconfig.json
+└── tsconfig.app.json
+```
