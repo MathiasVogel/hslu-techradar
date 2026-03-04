@@ -6,13 +6,12 @@ import { AuthService } from '@auth0/auth0-angular';
   imports: [],
   standalone: true,
   template: `
-    <button
+    <a
       data-cy="nav-logout"
       (click)="logout()"
-      class="btn btn-ghost text-base-content"
     >
       Log Out
-    </button>
+    </a>
   `
 })
 export class LogoutButtonComponent {

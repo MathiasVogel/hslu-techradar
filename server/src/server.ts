@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import swaggerJsDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
@@ -5,10 +6,14 @@ import techRoutes from './routes/tech.routes.js';
 import { schemas } from './schemas/schemas.js';
 import cors from 'cors';
 
+const PORT = process.env.PORT || 3000;
+const CORS_ORIGIN = process.env.CORS_ORIGIN || 'http://localhost:4200';
+const SWAGGER_SERVER_URL = process.env.SWAGGER_SERVER_URL || `http://localhost:${PORT}`;
+
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:4200',
+  origin: CORS_ORIGIN,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -25,7 +30,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:3000',
+        url: SWAGGER_SERVER_URL,
       },
     ],
     components: {
@@ -43,4 +48,4 @@ app.get('/api-spec', (req, res) => {
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use('/api/technologies', techRoutes);
 
-app.listen(3000, () => console.log('Tech Server runs on http://localhost:3000/api-docs'));
+app.listen(PORT, () => console.log(`Tech Server runs on http://localhost:${PORT}/api-docs`));
