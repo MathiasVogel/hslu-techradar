@@ -93,6 +93,16 @@ Startet den Server mit **tsx** im Watch-Modus auf **http://localhost:3000**.
 | `npm run db:gen` | Prisma Client neu generieren |
 | `npm run db:push` | Schema direkt in DB pushen (ohne Migration) |
 
+## Deployment (Docker-Image erstellen)
+
+Im Verzeichnis `server/`:
+
+```bash
+docker build -t server .
+```
+
+Erstellt ein Docker-Image mit dem Tag `server`. Das Image enthält den kompilierten TypeScript-Code und den generierten Prisma-Client.
+
 ## Projektstruktur
 
 ```

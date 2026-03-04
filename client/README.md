@@ -97,6 +97,16 @@ Führt alle E2E-Tests im Headless-Modus aus (z. B. für CI/CD).
 | `npm run cy:run` | Cypress headless ausführen |
 | `npm run generate-types` | API-Typen vom Server generieren |
 
+## Deployment (Docker-Image erstellen)
+
+Im Verzeichnis `client/`:
+
+```bash
+docker build -t client .
+```
+
+Erstellt ein Docker-Image mit dem Tag `client`. Das Image baut die Angular-App und stellt sie über **Nginx** auf Port 80 bereit.
+
 ## Projektstruktur
 
 ```

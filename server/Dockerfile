@@ -8,8 +8,8 @@ COPY . .
 # 2. Alles installieren (inkl. Prisma & TS)
 RUN npm install
 
-# 3. Prisma Client generieren
-RUN npx prisma generate
+# 3. Prisma Client generieren (Dummy-URL, da generate keine echte DB-Verbindung braucht)
+RUN DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy" npx prisma generate
 
 # 4. TypeScript zu JavaScript umwandeln
 RUN npm run build
