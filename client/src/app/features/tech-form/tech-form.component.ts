@@ -21,7 +21,7 @@ export class TechFormComponent {
   editData = input<TechnologyDTO | null>(null);
 
   techForm = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(2)]],
+    name: ['', [Validators.required]],
     category: ['' as any, [Validators.required]],
     ring: ['' as any, []],
     description: ['', [Validators.required]],
@@ -51,7 +51,7 @@ export class TechFormComponent {
           controls.name.disable();
           controls.category.disable();
           controls.description.disable();
-          controls.justification.setValidators([Validators.required, Validators.minLength(10)]);
+          controls.justification.setValidators([Validators.required]);
           controls.ring.setValidators([Validators.required]);
           break;
 
@@ -86,6 +86,10 @@ export class TechFormComponent {
       this.techService.createTechnology(payload);
     }
     this.closeModal();
+  }
+
+  protected get isCreateMode(): boolean {
+    return this.techService.formMode() === TechFormMode.CREATE;
   }
 
   closeModal() {

@@ -7,11 +7,11 @@
     <form [formGroup]="techForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-2">
       <fieldset class="fieldset">
 
-        <label class="label">Name</label>
+        <label class="label">Name @if (isCreateMode) {<span class="text-error">*</span>}</label>
         <input data-cy="tech-form-name" type="text" class="input input-bordered w-full"
                placeholder="z.B. ArgoCD" formControlName="name"/>
 
-        <label class="label">Kategorie</label>
+        <label class="label">Kategorie @if (isCreateMode) {<span class="text-error">*</span>}</label>
         <select data-cy="tech-form-category" class="select select-bordered w-full" formControlName="category">
           <option value="" disabled selected>Kategorie wählen</option>
           @for (cat of CATEGORIES; track cat) {
@@ -27,7 +27,7 @@
           }
         </select>
 
-        <label class="label">Beschreibung Technologie</label>
+        <label class="label">Beschreibung Technologie @if (isCreateMode) {<span class="text-error">*</span>}</label>
         <textarea
           data-cy="tech-form-description"
           class="textarea textarea-bordered w-full h-24"

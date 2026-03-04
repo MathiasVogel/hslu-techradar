@@ -3,7 +3,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-design-decisions]]
 == Arbeitsjournal
 
-*Studen Total: 76*
+*Studen Total: 80*
 
 [cols="1,1,4" options="header"]
 |===
@@ -94,4 +94,9 @@ a|
 a|
 * Dokumentation erstellen
 * Fazit schreiben
+
+|04.03.2025
+|4
+a|
+* Aufräumen und letzte Verbesserungen vornehmen
 |===
