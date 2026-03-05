@@ -43,6 +43,16 @@
           formControlName="justification">
         </textarea>
 
+        @if (editData()?.updatedAt) {
+          <div class="divider my-1"></div>
+          <div class="flex gap-8 text-xs opacity-50">
+            <span>Letzte Änderung: {{ editData()!.updatedAt | date:'dd.MM.yyyy, HH:mm' }}</span>
+            @if (editData()?.publishedAt) {
+              <span>Veröffentlicht am: {{ editData()!.publishedAt | date:'dd.MM.yyyy, HH:mm' }}</span>
+            }
+          </div>
+        }
+
         <div class="modal-action">
           <button data-cy="tech-form-cancel" type="button" class="btn" (click)="closeModal()" autofocus>Abbrechen</button>
           <button data-cy="tech-form-submit" type="submit" [disabled]="techForm.invalid" class="btn btn-primary">

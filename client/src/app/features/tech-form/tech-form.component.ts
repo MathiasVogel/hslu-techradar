@@ -1,5 +1,6 @@
 import {Component, effect, inject, input} from '@angular/core';
 import {NonNullableFormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
+import {DatePipe} from '@angular/common';
 import {TechnologyDTO} from '../../core/api/api.types';
 import {CATEGORIES, RINGS, TechFormMode} from '../../shared/constants/tech-radar.constatns';
 import {TechLabelPipe} from '../../shared/pipes/tech-label-pipe';
@@ -8,7 +9,7 @@ import {TechService} from '../../core/tech-service/tech.service';
 @Component({
   selector: 'app-tech-form',
   standalone: true,
-  imports: [ReactiveFormsModule, TechLabelPipe],
+  imports: [ReactiveFormsModule, TechLabelPipe, DatePipe],
   templateUrl: './tech-form.component.html',
   styles: ``
 })

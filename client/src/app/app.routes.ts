@@ -14,8 +14,7 @@ export const routes: Routes = [
     children: [
       { path: '', title: 'Home', component: HomeComponent },
       { path: 'radar', title: 'Radar', component: RadarComponent },
-      { path: 'radar-admin', title: 'Radar Administration', component: RadarAdministrationComponent, canActivate: [adminGuard] },
-      { path: '', redirectTo: 'home', pathMatch: 'full' }
+      { path: 'radar-admin', title: 'Radar Administration', component: RadarAdministrationComponent, canActivate: [adminGuard] }
     ]
   },
   { path: '**', redirectTo: '' }

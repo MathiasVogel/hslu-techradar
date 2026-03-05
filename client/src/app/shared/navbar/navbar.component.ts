@@ -43,10 +43,6 @@ import {ROLE_CLAIM} from '../constants/tech-radar.constatns';
 export class NavbarComponent {
   @ViewChild('dropdownTrigger') dropdownTrigger!: ElementRef<HTMLElement>;
 
-  constructor() {
-    console.log(this.isAdmin());
-  }
-
   private auth = inject(AuthService);
 
   currentUser = toSignal(this.auth.user$);
