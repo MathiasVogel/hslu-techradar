@@ -4,7 +4,7 @@ ifndef::imagesdir[:imagesdir: ./images]
 == Bausteinsicht
 === Level 2: Container-Diagramm
 
-image::c2-diagram.png[C4-Container-Diagramm, scale=false]
+image::c2-diagram.png[C4-Container-Diagramm, width=100%]
 
 [cols="1,3", options="header"]
 |===
@@ -18,7 +18,7 @@ image::c2-diagram.png[C4-Container-Diagramm, scale=false]
 === Level 3: Component-Diagramme
 ==== Client
 
-image::c3-diagram-client.png[C4-Component-Diagramm des Clients, scale=false]
+image::c3-diagram-client.png[C4-Component-Diagramm des Clients, width=100%]
 
 [cols="1,3", options="header"]
 |===
