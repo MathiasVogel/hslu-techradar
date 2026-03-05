@@ -35,7 +35,7 @@ image::c3-diagram-client.png[C4-Component-Diagramm des Clients, scale=false]
 
 ==== Server
 
-image::c3-diagram-server.png[C4-Component-Diagramm des Servers, scale=false]
+image::c3-diagram-server.png[C4-Component-Diagramm des Servers, width=100%]
 
 [cols="1,3", options="header"]
 |===

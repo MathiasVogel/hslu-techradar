@@ -19,22 +19,6 @@ Das Projekt besteht aus zwei Teilen:
 
 > **Entwicklungsumgebung einrichten:** Die Schritt-für-Schritt-Anleitungen zum Aufsetzen und Starten befinden sich in den jeweiligen READMEs. Zuerst den [Server](./server/README.md) einrichten, dann den [Client](./client/README.md).
 
-## Zugangsdaten
-
-Die Authentifizierung läuft über **Auth0**. Die folgenden Testaccounts verwenden Fake-E-Mail-Adressen von [Ethereal](https://ethereal.email/).
-
-**Admin User**
-- email: hoyt38@ethereal.email
-- Password: Admin123
-- role: admin
-- email password: zccknabVz6Y8c8TCd7
-
-**Normal User**
-- email: maia3@ethereal.email
-- Password: User1234
-- role: user
-- email password: Ta3C7n97GW1cCU3TXj
-
 ## Deployment (Docker Compose)
 
 ### 1. Docker-Images erstellen

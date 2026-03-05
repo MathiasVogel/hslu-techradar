@@ -4,7 +4,7 @@ ifndef::imagesdir[:imagesdir: ./images]
 == Kontextabgrenzung
 
 === Fachlicher Kontext
-image::c1-diagram.png[Kontextdiagramm, scale=false]
+image::c1-diagram.png[Kontextdiagramm, width=100%]
 [cols="1,2", options="header"]
 |===
 | Element | Beschreibung

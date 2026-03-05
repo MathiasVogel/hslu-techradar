@@ -5,7 +5,7 @@ ifndef::imagesdir[:imagesdir: ./images]
 
 Die Applikation wird mittels Docker Compose als vier Container betrieben. Ein separater Nginx Reverse Proxy ist der einzige Einstiegspunkt für den Browser und routet die Anfragen anhand der Domäne an die richtigen internen Container weiter.
 
-image::deployment-view.png[Deployment-Diagramm, scale=false]
+image::deployment-view.png[Deployment-Diagramm, width=100%]
 
 [cols="1,1,2", options="header"]
 |===

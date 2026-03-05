@@ -2,7 +2,6 @@ include::config.adoc[]
 
 = Dokumentation Techradar
 
-:imagesdir: ./images
 :revnumber: {revnumber}
 :revdate: {revdate}
 :revremark: {revremark}
