@@ -2,8 +2,10 @@
 
 Der **HSLU Tech Radar** ist eine Webapplikation, die im Rahmen des Moduls *Web Programming Lab* an der Hochschule Luzern entwickelt wurde. Die Applikation visualisiert Technologien als interaktiven Radar und ermöglicht es Admins, Technologien zu erstellen, zu bearbeiten und zu publizieren. Benutzer können die publizierten Technologien auf dem Radar einsehen.
 
-## ⚠️ Hinweis zu Passwörtern
+## ⚠️ Hinweis zu Auth0
+Das Auth0-Konto befand sich während der Entwicklung noch in einem Probemonat. Grundsätzlich sollte nach Ablauf alles weiterhin funktionieren, da keine kostenpflichtigen Features genutzt werden. Sollte es dennoch zu Problemen mit der Anmeldung kommen, bitte unter mathias.vogel@stud.hslu.ch melden damit kurz ein Abo abgeschlossen werden kann.
 
+## ⚠️ Hinweis zu Passwörtern
 Die Passwörter und Zugangsdaten in den `.env`-Dateien sind **ausschliesslich für die lokale Entwicklung** gedacht und dürfen **nicht im Produktivbetrieb** verwendet werden. Vor einem Deployment müssen alle Passwörter und Secrets durch sichere, individuelle Werte ersetzt werden.
 
 ## Projektaufbau

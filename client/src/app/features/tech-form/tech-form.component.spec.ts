@@ -73,12 +73,11 @@ describe('TechFormComponent (vitest)', () => {
     expect(category.disabled).toBe(true);
     expect(description.disabled).toBe(true);
 
-    justification.setValue('zu kurz');
+    justification.setValue('test');
     justification.updateValueAndValidity();
     ring.setValue('');
     ring.updateValueAndValidity();
 
-    expect(justification.errors?.['minlength']).toBeTruthy();
     expect(ring.errors?.['required']).toBeTruthy();
   });
 

@@ -1,4 +1,4 @@
-ifndef::imagesdir[:imagesdir: ../images]
+ifndef::imagesdir[:imagesdir: ./images]
 
 [[section-design-decisions]]
 == Fazit
@@ -11,14 +11,16 @@ Für das Projekt nahm ich den Vorschlag vom Dozenten an und dachte mir, dass ich
 
 Ein konkretes Beispiel war Prisma, welches vor kurzem auf die Version 7 erhöht wurde. Da die Version brandneu war, gab es Probleme mit dem IntelliJ-Plugin. Die Fehlersuche hat mich mehrere Stunden gekostet, bis ich herausfand, dass ich den prisma/language-server@7.0.0 manuell installieren und konfigurieren musste.
 
-Allgemein muss ich sagen, dass das Aufsetzen der verschiedenen Technologien deutlich mehr Zeit braucht als gedacht. Die Dokumentationen sind oft nicht mehr aktuell oder man findet Fehler, für welche es keine beschriebenen Lösungen gibt. Das Ganze hat mich ab und zu schon ein wenig gebrochen, wenn man sehr lange daran sitzt und das Gefühl hat, es geht nicht voran. Am Ende konnte ich dann trotzdem meistens alles sauber aufsetzen.
+Allgemein musste ich feststellen, dass das Setup verschiedener Technologien oft zeitintensiver ist als gedacht. Dokumentationen sind teilweise nicht aktuell oder man stösst auf Fehler, für die es noch keine dokumentierten Lösungen gibt. Das war zwischendurch frustrierend, wenn man lange daran sitzt und das Gefühl hat, es geht nicht voran. Am Ende konnte ich dann trotzdem fast alles sauber aufsetzen.
 
 *Umsetzung der Anforderungen und Testing*
 
-Nachdem das Grundgerüst stand, ging eigentlich alles sehr „straight forward“. Das Bauen der Endpunkte und des Frontends ging relativ zügig. Einzig das Formular für die Technologien, bei welchem ich alles in einem haben wollte (create, update), gab ein wenig mehr Arbeit.
+Nachdem das Grundgerüst stand, verlief die Entwicklung sehr zielgerichtet ("straight forward"). Das Erstellen der Endpunkte und des Frontends ging zügig voran. Einzig das Formular für die Technologien, bei dem ich die Logik für Erstellung und Aktualisierung (Create/Update) in einem Element vereinen wollte, war etwas aufwendiger.
 
-Beim Thema Testing war Cypress eine positive Überraschung. Es ist sehr angenehm damit zu arbeiten, weshalb ich am Ende deutlich mehr E2E-Tests geschrieben habe als ursprünglich geplant. Ich bin ehrlich gesagt kein grosser Fan davon, Unit-Tests zu schreiben, bei denen man für jede Kleinigkeit 100 Abhängigkeiten mocken muss – da bieten E2E-Tests für mich einen viel grösseren Mehrwert, um die echten User Stories abzusichern.
+Beim Thema Testing war Cypress eine positive Überraschung. Da das Framework sehr angenehm zu bedienen ist, habe ich am Ende deutlich mehr E2E-Tests geschrieben als ursprünglich geplant. Ich bin ehrlich gesagt kein grosser Fan von Unit-Tests, bei denen man für jede Kleinigkeit unzählige Abhängigkeiten mocken muss. E2E-Tests bieten für mich einen viel grösseren Mehrwert, um die echten User Stories abzusichern.
 
 *Zukunft*
 
 Allgemein kann ich sagen, dass mir die Arbeit mit Angular sehr viel Spass gemacht hat, obwohl ich davor eher mit React gearbeitet habe. Und ich denke, ich werde Angular in Zukunft auch weiter verwenden, da es einfach sehr angenehm ist damit zu arbeiten. Es gibt viele coole Features und es ist sehr gut dokumentiert.
+
+Das Projekt selbst ist natürlich noch nicht perfekt. Ich habe bereits damit begonnen, alles zu containerisieren. Das funktioniert zwar schon, bietet aber sicher noch Raum für Verbesserungen. Mein Ziel ist es, die Applikation testweise auf meinem eigenen Server zu deployen, um den gesamten Prozess einmal durchzuspielen und zu sehen, wie das genau funktioniert. Da ich mir noch nicht zu 100 % sicher bin, ob das aktuelle Setup dafür schon bereit ist, werde ich dort nochmals Hand anlegen, sobald es die Zeit zulässt.

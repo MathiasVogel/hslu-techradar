@@ -1,0 +1,60 @@
+include::config.adoc[]
+
+= Dokumentation Techradar
+
+:imagesdir: ./images
+:revnumber: {revnumber}
+:revdate: {revdate}
+:revremark: {revremark}
+:toc-title: Inhaltsverzeichnis
+
+
+:numbered:
+
+<<<
+// 1. Anforderungen und Ziele
+include::01_introduction_and_goals.adoc[]
+
+<<<
+// 2. Randbedingungen
+include::02_architecture_constraints.adoc[]
+
+<<<
+// 3. Kontextabgrenzung
+include::03_context_and_scope.adoc[]
+
+<<<
+// 4. Lösungsstrategie
+include::04_solution_strategy.adoc[]
+
+<<<
+// 5. Bausteinsicht
+include::05_building_block_view.adoc[]
+
+<<<
+// 6. Laufzeitsicht
+include::06_runtime_view.adoc[]
+
+<<<
+// 7. Verteilungssicht
+include::07_deployment_view.adoc[]
+
+<<<
+// 8. Querschnittliche Konzepte
+include::08_concepts.adoc[]
+
+<<<
+// 9. Entscheidungen
+include::09_architecture_decisions.adoc[]
+
+<<<
+// 10. Technische Schulden
+include::10_technical_risks.adoc[]
+
+<<<
+// 11.Fazit
+include::11_conclusion.adoc[]
+
+<<<
+// 12. Arbeitsjournal
+include::12_work_journal.adoc[]

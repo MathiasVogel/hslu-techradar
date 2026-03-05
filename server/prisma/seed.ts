@@ -43,7 +43,7 @@ async function main() {
       name: 'TypeScript',
       category: Category.LANGUAGES_AND_FRAMEWORKS,
       ring: Ring.ADOPT,
-      description: 'Typsichere Erweiterung von JavaScript für große Frontends und Node-Services.',
+      description: 'Typsichere Erweiterung von JavaScript für grosse Frontends und Node-Services.',
       justification: 'Verbessert Wartbarkeit und Developer Experience im gesamten Stack.',
       published: true,
       publishedAt: new Date('2024-02-15')
@@ -114,7 +114,7 @@ async function main() {
       name: 'Jenkins',
       category: Category.TOOLS,
       ring: Ring.HOLD,
-      description: 'Ältere CI/CD-Plattform mit großer Plugin-Landschaft.',
+      description: 'Ältere CI/CD-Plattform mit grosser Plugin-Landschaft.',
       justification: 'Legacy-Pipelines weiter betreiben, aber Migration zu moderneren Alternativen prüfen.',
       published: false
     },
@@ -125,7 +125,7 @@ async function main() {
       category: Category.PLATFORMS,
       ring: Ring.TRIAL,
       description: 'Optimale Plattform für Next.js und Frontend-Deployments.',
-      justification: 'Setzt Maßstäbe in Sachen Developer Experience und Performance.',
+      justification: 'Setzt Massstäbe in Sachen Developer Experience und Performance.',
       published: true,
       publishedAt: new Date('2024-03-15')
     },
@@ -222,7 +222,7 @@ async function main() {
       name: 'Micro Frontends',
       category: Category.TECHNIQUES,
       ring: Ring.HOLD,
-      description: 'Zerlegung großer Frontends in unabhängige Vertical Slices.',
+      description: 'Zerlegung grosser Frontends in unabhängige Vertical Slices.',
       justification: 'Starker organisatorischer Nutzen, aber erhöhtes Laufzeit- und DX-Overhead.',
       published: false
     },
@@ -230,7 +230,7 @@ async function main() {
       name: 'Continuous Discovery',
       category: Category.TECHNIQUES,
       ring: Ring.TRIAL,
-      description: 'Regelmäßige Produkt- und Nutzerhypothesen validieren.',
+      description: 'Regelmässige Produkt- und Nutzerhypothesen validieren.',
       justification: 'Reduziert Fehlinvestitionen, braucht aber Disziplin im Team.',
       published: false
     }
